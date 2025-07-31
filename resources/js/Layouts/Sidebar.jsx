@@ -246,19 +246,18 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
   };
 
   const isUserManagementRoute = [
-    "permissions.index",
-    "roles.index",
-    "roles.create",
-    "roles.edit",
     "user.index",
     "user.create",
     "user.edit",
   ].some((routeName) => route().current(routeName));
 
   const isContentManagementRoute = [
-    "faqs.index",
-    "faqs.create",
-    "faqs.edit",
+    "permission.index",
+    "permission.create",
+    "permission.edit",
+    "roles.index",  
+    "roles.create",
+    "roles.edit",
 
   ].some((routeName) => route().current(routeName));
   

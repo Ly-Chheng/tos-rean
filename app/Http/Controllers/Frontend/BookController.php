@@ -5,13 +5,18 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class BookController extends Controller
 {
-    
-    public function index()
-    {
-        //
-        return inertia('Dashboard');
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request)
+    {        
+
+      return inertia('Cms/Book/Books',[
+          
+      ]);
+      
     }
 
     /**

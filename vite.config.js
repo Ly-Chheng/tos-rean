@@ -8,10 +8,15 @@ export default defineConfig({
             input: 'resources/js/app.jsx',
             refresh: true,
         }),
-        react(),
+        react()
     ],
     build: {
         assetsInclude: ['resources/js/assets/**/*'],
     },
-   
+    // server: {
+    //     host: '172.16.0.254',
+    //     strictPort: true,
+    //     port: 5173,
+    //     cors: true
+    // },
 });

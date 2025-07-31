@@ -1,9 +1,25 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\UserController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Frontend\HomeController;
+use Inertia\Inertia;
+use App\Http\Middleware\HandleInertiaRequests;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::resource('dashboard', App\Http\Controllers\Frontend\HomeController::class);
+Route::redirect('/', '/dashboard');
+
+// Route::get('web/homepage', [App\Http\Controllers\Web\HomepageController::class, 'index'])->name('homepage');
+
+Route::middleware(['auth', 'verified', HandleInertiaRequests::class])->group(function () {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('faqs', App\Http\Controllers\Frontend\FaqsController::class);
+    Route::resource('books', App\Http\Controllers\Frontend\BookController::class);
+    Route::resource('permission', App\Http\Controllers\Auth\PermissionController::class);
+    Route::resource('roles', App\Http\Controllers\Auth\RoleController::class);
+    Route::get('/lock-screen', [App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'showLockScreen'])->name('lock-screen');    
+    Route::post('/lock-screen/unlock', [App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'unlock'])->name('lock-screen.unlock');
+    Route::post('/lock-screen', [App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'lock'])->name('lock-screen.lock');
+});
+
+require __DIR__ . '/auth.php';
