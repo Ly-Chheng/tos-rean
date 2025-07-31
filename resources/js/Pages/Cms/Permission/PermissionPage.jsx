@@ -97,7 +97,7 @@ function Permission({ auth, permissions = [] }) {
     >
       <Head title="Permission" />
 
-      <div className="py-4">
+      <div className="">
         <div className="flex flex-row gap-x-4 justify-between mb-4">
           <div className="flex items-center gap-x-2">
             <h4 className="text-sm">Show</h4>

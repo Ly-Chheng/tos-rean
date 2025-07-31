@@ -2,17 +2,18 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
 import { Form, Input, Button, Checkbox, Row, Col } from "antd";
 
-function CreateRole({ auth, permissions }) {
-    const { data, setData, post, processing, errors } = useForm({
-        name: '',
-        permissions: [],
+function EditRole({ auth, role, permissions, rolePermissions }) {
+    const { data, setData, post, put, processing, errors } = useForm({
+        name: role.name || '',
+        permissions: rolePermissions || [],
     });
 
     const handleSubmit = () => {
         console.log('Form Data:', data);
-        post(route('roles.store'));
+        put(route('roles.update', role.id)); // Use PUT for update
     };
 
+    // Rest of the component remains similar...
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -27,13 +28,12 @@ function CreateRole({ auth, permissions }) {
                         </div>
                     </Link>
                     <h6 className="text-sm text-blue-600 dark:text-gray-200 leading-tight px-1">
-                        / Create
+                        / Edit
                     </h6>
                 </div>
             }
         >
-            <Head title="Create Role" />
-
+            <Head title="Edit Role" />
             <div className="bg-white shadow p-10 rounded">
                 <Form layout="vertical" onFinish={handleSubmit}>
                     <Form.Item
@@ -42,14 +42,16 @@ function CreateRole({ auth, permissions }) {
                         help={errors.name}
                     >
                         <Input
-                            name="name"
                             value={data.name}
-                            placeholder="Enter role name"
                             onChange={(e) => setData('name', e.target.value)}
                         />
                     </Form.Item>
 
-                    <Form.Item label="Permissions">
+                    <Form.Item
+                        label="Permissions"
+                        validateStatus={errors.permissions && "error"}
+                        help={errors.permissions}
+                    >
                         <Checkbox.Group
                             value={data.permissions}
                             onChange={(checked) => setData('permissions', checked)}
@@ -72,7 +74,7 @@ function CreateRole({ auth, permissions }) {
                             loading={processing}
                             className="bg-blue-600"
                         >
-                            {processing ? 'Submitting...' : 'Submit'}
+                            {processing ? 'Updating...' : 'Update'}
                         </Button>
                     </Form.Item>
                 </Form>
@@ -80,5 +82,4 @@ function CreateRole({ auth, permissions }) {
         </AuthenticatedLayout>
     );
 }
-
-export default CreateRole;
+export default EditRole;
