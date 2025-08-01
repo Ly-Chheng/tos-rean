@@ -161,6 +161,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
       items: [
         { name: "Permission", route: "permission.index", permission: null },
         { name: "Role", route: "roles.index", permission: null },
+        { name: "User", route: "users.index", permission: null },
         
       ],
     },
