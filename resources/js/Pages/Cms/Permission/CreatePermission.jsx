@@ -22,7 +22,7 @@ const CreatePermission = ({ open, confirmLoading, onOk, onCancel, editingPermiss
     form
       .validateFields()
       .then((values) => {
-        onOk(values); // Pass form values to parent component
+        onOk(values); 
       })
       .catch((info) => {
         console.log("Validate Failed:", info);
