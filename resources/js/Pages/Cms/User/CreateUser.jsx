@@ -12,7 +12,7 @@ function CreateUser({ auth, roles = [] }) {
         password: "",
         password_confirmation: "",
         roles_id: "",
-        active: true, // Default active (checked)
+        active: true,
     });
     console.log(roles);
 
@@ -32,13 +32,11 @@ function CreateUser({ auth, roles = [] }) {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setData(name, value);
-        // Optional: Log individual input changes for debugging
         console.log(`Input Changed - ${name}: ${value}`);
     };
 
     const handleSwitchChange = (checked) => {
         setData("active", checked);
-        // Log switch change
         console.log(`Active status changed to: ${checked ? "Active" : "Inactive"}`);
     };
 
@@ -74,25 +72,28 @@ function CreateUser({ auth, roles = [] }) {
                             value={data.name}
                             onChange={handleChange}
                             className="mt-1 block w-full"
+                            placeholder="Enter user name"
                         />
                     </Col>
                     <Col span={12}>
-                        <InputLabel value="Role" htmlFor="role" />
-
+                        <InputLabel value="Role" htmlFor="roles_id" />
                         <SelectInput
-                            label="Role"
+                            id="roles_id"
                             name="roles_id"
                             value={data.roles_id}
-                            onChange={(e) => setData('roles_id', e.target.value)}
-                            >
+                            onChange={handleChange}
+                            className="mt-1 block w-full"
+                        >
                             <option value="">Select</option>
                             {roles.map((role) => (
                                 <option key={role.id} value={role.id}>
-                                {role.name}
+                                    {role.name}
                                 </option>
                             ))}
                         </SelectInput>
-
+                        {errors.roles_id && (
+                            <div className="text-red-500 text-sm mt-1">{errors.roles_id}</div>
+                        )}
                     </Col>
                 </Row>
                 <Row gutter={16}>
@@ -105,6 +106,7 @@ function CreateUser({ auth, roles = [] }) {
                             value={data.email}
                             onChange={handleChange}
                             className="mt-1 block w-full"
+                            placeholder="Enter email"
                         />
                     </Col>
                     <Col span={12}>
@@ -116,6 +118,7 @@ function CreateUser({ auth, roles = [] }) {
                             value={data.password}
                             onChange={handleChange}
                             className="mt-1 block w-full"
+                            placeholder="Enter password"
                         />
                         {errors.password && (
                             <div className="text-red-500 text-sm mt-1">{errors.password}</div>
@@ -132,6 +135,7 @@ function CreateUser({ auth, roles = [] }) {
                             value={data.password_confirmation}
                             onChange={handleChange}
                             className="mt-1 block w-full"
+                            placeholder="Confirm password"
                         />
                         {errors.password_confirmation && (
                             <div className="text-red-500 text-sm mt-1">
