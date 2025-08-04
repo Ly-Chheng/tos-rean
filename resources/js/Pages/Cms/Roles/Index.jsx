@@ -52,7 +52,7 @@ function Index({ auth, roles }) {
       {contextHolder}
       <Head title="Roles" />
 
-      <div className="p-4">
+      <div className="">
         <div className="flex justify-between">
           <h2 className="text-lg font-semibold mb-4">Roles</h2>
           <Link href={route("roles.create")}>
