@@ -11,11 +11,11 @@ class AdminTableSeeder extends Seeder
 {
     public function run()
     {
-        $role = Role::create(['name' => 'Admin']);
+        $role = Role::create(['name' => 'lani']);
         $user = User::create([
             'roles_id' => $role->id,
             'name' => 'Admin',
-            'email' => 'admin@gmail.com',
+            'email' => 'lani@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('123456')
         ]);

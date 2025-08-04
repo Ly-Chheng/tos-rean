@@ -10,10 +10,9 @@ function EditRole({ auth, role, permissions, rolePermissions }) {
 
     const handleSubmit = () => {
         console.log('Form Data:', data);
-        put(route('roles.update', role.id)); // Use PUT for update
+        put(route('roles.update', role.id));
     };
 
-    // Rest of the component remains similar...
     return (
         <AuthenticatedLayout
             user={auth.user}

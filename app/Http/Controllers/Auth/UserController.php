@@ -20,13 +20,17 @@ class UserController extends Controller
             'users' => $users->map(function ($user) {
                 // log($user);
                 return [
-                    'id' => $user->id,
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'status' => $user->status,
-                    'roles' => $user->role ? $user->role->name : 'No Role',
-                    'success' => session('success'),
-                ];
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'status' => $user->status,
+                'roles' => $user->role ? $user->role->name : 'No Role',
+                'created_at' => $user->created_at ? $user->created_at->toDateTimeString() : 'N/A',
+                'updated_at' => $user->updated_at ? $user->updated_at->toDateTimeString() : 'N/A',
+                'phone' => $user->phone ?: 'N/A', // Added for more detail
+                'email_verified_at' => $user->email_verified_at ? $user->email_verified_at->toDateTimeString() : 'N/A', // Added
+                'success' => session('success'),
+            ];
             }),
         ]);
     }
@@ -68,7 +72,21 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::with('roles')->findOrFail($id);
+
+        return inertia('Cms/User/Show', [
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'status' => $user->status,
+                'roles' => $user->roles->pluck('name')->join(', ') ?: 'No Role',
+                'created_at' => $user->created_at,
+                'phone' => $user->phone ?: 'N/A',
+                'email_verified_at' => $user->email_verified_at,
+                'updated_at' => $user->updated_at,
+            ],
+        ]);
     }
 
     /**
@@ -123,6 +141,9 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route("users.index")->with('success', 'User deleted successfully!');
     }
 }

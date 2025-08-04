@@ -73,6 +73,7 @@ function UpdateUser({ auth, roles = [], user }) {
                             value={data.name}
                             onChange={handleChange}
                             className="mt-1 block w-full"
+                            placeholder="Enter user name"
                         />
                         {errors.name && (
                             <div className="text-red-500 text-sm mt-1">{errors.name}</div>
@@ -109,6 +110,7 @@ function UpdateUser({ auth, roles = [], user }) {
                             value={data.email}
                             onChange={handleChange}
                             className="mt-1 block w-full"
+                            placeholder="Enter email"
                         />
                         {errors.email && (
                             <div className="text-red-500 text-sm mt-1">{errors.email}</div>
@@ -123,7 +125,7 @@ function UpdateUser({ auth, roles = [], user }) {
                             value={data.password}
                             onChange={handleChange}
                             className="mt-1 block w-full"
-                            placeholder=""
+                            placeholder="Enter password"
                         />
                         {errors.password && (
                             <div className="text-red-500 text-sm mt-1">{errors.password}</div>
@@ -132,7 +134,7 @@ function UpdateUser({ auth, roles = [], user }) {
                 </Row>
                 <Row gutter={16}>
                     <Col span={12}>
-                        <InputLabel value="Password Confirmation" htmlFor="password_confirmation" />
+                        <InputLabel value="Confirm Password" htmlFor="password_confirmation" />
                         <TextInput
                             id="password_confirmation"
                             name="password_confirmation"
@@ -140,7 +142,7 @@ function UpdateUser({ auth, roles = [], user }) {
                             value={data.password_confirmation}
                             onChange={handleChange}
                             className="mt-1 block w-full"
-                            placeholder=""
+                            placeholder="Confirm password"
                         />
                         {errors.password_confirmation && (
                             <div className="text-red-500 text-sm mt-1">{errors.password_confirmation}</div>

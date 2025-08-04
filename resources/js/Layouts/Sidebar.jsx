@@ -259,6 +259,9 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
     "roles.index",  
     "roles.create",
     "roles.edit",
+    "users.index",
+    "users.create",
+    "users.edit",
 
   ].some((routeName) => route().current(routeName));
   

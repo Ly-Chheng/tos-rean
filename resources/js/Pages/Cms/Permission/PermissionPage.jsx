@@ -7,7 +7,7 @@ import Pagination from "../../../Components/Paginate";
 import { Button, Input, Select, message } from "antd";
 import React, { useState, useEffect } from "react";
 import CreatePermission from "./CreatePermission";
-
+import { useConfirmModal } from "../../../Components/ModalContext";
 
 function Permission({ auth, permissions = [] }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,8 +16,8 @@ function Permission({ auth, permissions = [] }) {
   const [showModal, setShowModal] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [editingPermission, setEditingPermission] = useState(null);
+  const { showModal: showConfirmModal, contextHolder } = useConfirmModal();
 
-  // Filter permissions
   const filteredPermissions = permissions.filter((perm) =>
     perm?.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -36,17 +36,27 @@ function Permission({ auth, permissions = [] }) {
   const currentPermissions = filteredPermissions.slice(startIndex, endIndex);
 
   const handleDeleteClick = (id) => {
-    if (confirm("Are you sure you want to delete this permission?")) {
-      router.delete(route("permission.destroy", id), {
-        onSuccess: () => {
-          setCurrentPage(1);
-          message.success("Permission deleted successfully");
-        },
-        onError: () => {
-          message.error("Failed to delete permission");
-        },
-      });
-    }
+    const permission = permissions.find((perm) => perm.id === id);
+    showConfirmModal({
+      type: "confirm",
+      title: "Confirm Deletion",
+      content: `Are you sure you want to delete permission "${permission.name}"?`,
+      okText: "Delete",
+      cancelText: "Cancel",
+      onOk: () => {
+        router.delete(route("permission.destroy", id), {
+          onSuccess: () => {
+            setCurrentPage(1);
+            message.success("Permission deleted successfully");
+          },
+          onError: () => {
+            message.error("Failed to delete permission");
+          },
+        });
+      },
+      onCancel: () => {
+      },
+    });
   };
 
   const handleEditClick = (id) => {
@@ -95,6 +105,7 @@ function Permission({ auth, permissions = [] }) {
         </div>
       }
     >
+      {contextHolder} {/* Add contextHolder for the confirmation modal */}
       <Head title="Permission" />
 
       <div className="">
@@ -160,13 +171,6 @@ function Permission({ auth, permissions = [] }) {
                     <td className="py-2 px-4">{permission.name}</td>
                     <td className="py-2 px-4">
                       <div className="flex justify-center space-x-2">
-                        <ToolTipButton
-                          text="View"
-                          icon={<FiEye className="w-4 h-4" />}
-                          onClick={() => router.get(route("permission.show", permission.id))}
-                          color="green"
-                          aria-label={`View permission ${permission.name}`}
-                        />
                         <ToolTipButton
                           text="Edit"
                           icon={<FiEdit className="w-4 h-4" />}
