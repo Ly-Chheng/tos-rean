@@ -13,7 +13,8 @@ class RoleController extends Controller
     {
         $roles = Role::with('permissions')->get();
         return inertia('Cms/Roles/Index', [
-            'roles' => $roles
+            'roles' => $roles,
+            'success' => session('success'),
         ]);
     }
 
@@ -40,7 +41,7 @@ class RoleController extends Controller
 
         $role = Role::create(['name' => $validated['name']]);
         $role->syncPermissions($validated['permissions']);
-        return redirect()->route('roles.index')->with('success', 'Role created successfully');
+        return to_route('roles.index')->with('success', 'Role created successfully');
     }
 
     public function show(string $id)
@@ -82,13 +83,13 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $role->update(['name' => $validated['name']]);
         $role->syncPermissions($validated['permissions']);
-        return redirect()->route('roles.index')->with('success', 'Role updated successfully');
+        return to_route('roles.index')->with('success', 'Role updated successfully');
     }
 
     public function destroy(string $id)
     {
         $role = Role::findOrFail($id);
         $role->delete();
-        return redirect()->route('roles.index')->with('success', 'Role deleted successfully');
+        return to_route('roles.index')->with('success', 'Role deleted successfully');
     }
 }

@@ -18,7 +18,6 @@ function UpdateUser({ auth, roles = [], user }) {
     const handleSubmit = () => {
         // console.log("Form Data:", data);
         put(route("users.update", user.id), {
-            onSuccess: () => console.log("User updated successfully!"),
             onError: (errors) => console.log("Error updating user:", errors),
         });
     };

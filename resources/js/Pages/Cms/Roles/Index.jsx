@@ -5,8 +5,9 @@ import { Button, Row, Col } from "antd";
 import ToolTipButton from "@/Components/TooltipButton";
 import { useState } from "react";
 import { useConfirmModal } from "@/Components/ModalContext";
+import ToastNotification from "@/Components/ToastNotification";
 
-function Index({ auth, roles }) {
+function Index({ auth, roles, success }) {
   console.log("Roles Data:", roles); // Debug the roles prop
   const [expandedRoleId, setExpandedRoleId] = useState(null);
   const { showModal, contextHolder } = useConfirmModal();
@@ -54,14 +55,14 @@ function Index({ auth, roles }) {
 
       <div className="">
         <div className="flex justify-between">
-          <h2 className="text-lg font-semibold mb-4">Roles</h2>
+          <h2 className="text-lg font-semibold mb-4"></h2>
           <Link href={route("roles.create")}>
             <Button type="primary" className="mb-4">
               Add Role
             </Button>
           </Link>
         </div>
-
+        <ToastNotification success={success} routeName="roles.index" />
         <table className="min-w-full bg-white dark:bg-gray-800 text-sm">
           <thead>
             <tr className="bg-blue-500 dark:bg-blue-400 text-left text-white">
@@ -93,9 +94,8 @@ function Index({ auth, roles }) {
                           icon={<FiEye className="w-4 h-4" />}
                           onClick={() => toggleContainer(role.id)}
                           color="green"
-                          aria-label={`${
-                            expandedRoleId === role.id ? "Hide" : "View"
-                          } details for role ${role.name}`}
+                          aria-label={`${expandedRoleId === role.id ? "Hide" : "View"
+                            } details for role ${role.name}`}
                         />
                         <ToolTipButton
                           text="Edit"
@@ -123,7 +123,7 @@ function Index({ auth, roles }) {
                       <td colSpan="3" className="py-2 px-4">
                         <div className="p-4 dark:bg-gray-800 rounded">
                           {Array.isArray(role.permissions) &&
-                          role.permissions.length > 0 ? (
+                            role.permissions.length > 0 ? (
                             <Row gutter={[16, 16]}>
                               {role.permissions.map((permission, idx) => (
                                 <Col span={8} key={permission.id || idx}>

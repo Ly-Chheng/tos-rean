@@ -12,10 +12,11 @@ class PermissionController extends Controller
 {
     public function index()
     {
-        $permissions = Permission::all();
+        $permissions = Permission::orderBy('id', 'desc')->get();
         // dd($permission->pluck('name'));
         return inertia('Cms/Permission/PermissionPage',[
-            "permissions" => $permissions
+            "permissions" => $permissions,
+            'success' => session('success'),
         ]);
     }
 
@@ -45,11 +46,7 @@ class PermissionController extends Controller
             'guard_name' => $request->guard_name,
         ]);
 
-        return redirect()->route('permission.index')
-            ->with(
-                'success', 
-                'Permission created successfully'
-            );
+        return to_route('permission.index')->with('success','Permission created successfully');
     }
 
     public function show(string $id)
@@ -70,7 +67,7 @@ class PermissionController extends Controller
             'guard_name' => $request->guard_name,
         ]);
         
-        return redirect()->route('permission.index')->with(
+        return to_route('permission.index')->with(
             'success', 'Permission updated successfully'
         );
     }
@@ -82,7 +79,7 @@ class PermissionController extends Controller
         $permission = Permission::findOrFail($id);
         $permission->delete();
 
-        return redirect()->route('permission.index')
+        return to_route('permission.index')
             ->with(
                 'success', 
                 'Permission deleted successfully'

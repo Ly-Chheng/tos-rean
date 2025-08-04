@@ -8,8 +8,9 @@ import { Button, Input, Select, message } from "antd";
 import React, { useState, useEffect } from "react";
 import CreatePermission from "./CreatePermission";
 import { useConfirmModal } from "../../../Components/ModalContext";
+import ToastNotification from "@/Components/ToastNotification";
 
-function Permission({ auth, permissions = [] }) {
+function Permission({ auth, permissions, success = [] }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -47,7 +48,6 @@ function Permission({ auth, permissions = [] }) {
         router.delete(route("permission.destroy", id), {
           onSuccess: () => {
             setCurrentPage(1);
-            message.success("Permission deleted successfully");
           },
           onError: () => {
             message.error("Failed to delete permission");
@@ -78,11 +78,9 @@ function Permission({ auth, permissions = [] }) {
         setShowModal(false);
         setConfirmLoading(false);
         setEditingPermission(null);
-        message.success(`Permission ${isEdit ? "updated" : "created"} successfully`);
       },
       onError: () => {
         setConfirmLoading(false);
-        message.error(`Failed to ${isEdit ? "update" : "create"} permission`);
       },
     });
   };
@@ -107,7 +105,7 @@ function Permission({ auth, permissions = [] }) {
     >
       {contextHolder} {/* Add contextHolder for the confirmation modal */}
       <Head title="Permission" />
-
+      <ToastNotification success={success} routeName="permission.index" />
       <div className="">
         <div className="flex flex-row gap-x-4 justify-between mb-4">
           <div className="flex items-center gap-x-2">

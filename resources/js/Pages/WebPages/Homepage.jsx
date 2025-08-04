@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaBook, FaShareAlt, FaFileAlt, FaQuestionCircle } from 'react-icons/fa';
-function HomepageWeb() {
+function Homepage() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -48,4 +48,4 @@ function HomepageWeb() {
     );
 }
 
-export default HomepageWeb;
+export default Homepage;
