@@ -15,9 +15,8 @@ const ToastNotification = ({ success, routeName }) => {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        toastId: `${success}-${Date.now()}`, // unique id to force showing
+        toastId: `${success}-${Date.now()}`,
       });
-
       if (routeName) {
         router.replace(route(routeName), {}, { preserveState: true });
       }
