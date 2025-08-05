@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User; // Assuming you have a User model
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -15,8 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('role')->get();
+       $users = User::with('role')->orderBy('id', 'desc')->get();
         return inertia('Cms/User/Index', [
+            'success' => session('success'),
             'users' => $users->map(function ($user) {
                 // log($user);
                 return [
@@ -27,9 +29,7 @@ class UserController extends Controller
                 'roles' => $user->role ? $user->role->name : 'No Role',
                 'created_at' => $user->created_at ? $user->created_at->toDateTimeString() : 'N/A',
                 'updated_at' => $user->updated_at ? $user->updated_at->toDateTimeString() : 'N/A',
-                'phone' => $user->phone ?: 'N/A', // Added for more detail
-                'email_verified_at' => $user->email_verified_at ? $user->email_verified_at->toDateTimeString() : 'N/A', // Added
-                'success' => session('success'),
+                'phone' => $user->phone ?: 'N/A'
             ];
             }),
         ]);
@@ -48,23 +48,19 @@ class UserController extends Controller
     }
 
    
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|confirmed',
-            'roles_id' => 'required',
-        ]);
+        $validated = $request->validated();
 
         $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'roles_id' => $validated['roles_id'],
-            'password' => Hash::make($validated['password']), // using Hash
+            'password' => Hash::make($validated['password']),
         ]);
 
-        return redirect()->route("users.index")->with('success', 'User created successfully!');
+        return to_route("users.index")->with('success', 'User created successfully!');
+        
     }
 
     /**
@@ -133,8 +129,8 @@ class UserController extends Controller
         // Sync roles using Spatie
         $user->syncRoles([$validated['roles']]);
 
-        return redirect()->route("users.index")->with('success', 'User updated successfully!');
-    }
+        return to_route('users.index')->with('success', 'User updated successfully!');
+    }   
 
     /**
      * Remove the specified resource from storage.

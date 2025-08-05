@@ -1,51 +1,67 @@
-import { useState } from 'react';
-import { FaBook, FaShareAlt, FaFileAlt, FaQuestionCircle } from 'react-icons/fa';
-function HomepageWeb() {
-    const [isOpen, setIsOpen] = useState(false);
+import Layout from "./Layout";
+import { FaGraduationCap } from "react-icons/fa";
+import { GiOpenBook } from "react-icons/gi";
 
-    return (
-        <header className=" shadow-md bg-blue-700">
-            <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-                {/* Logo */}
-                <div className="text-2xl font-bold text-gray-100 mr-4">MyLogo</div>
-                <nav className="hidden md:flex  space-x-4 ">
-                    <a href="#" className="text-gray-100 hover:bg-orange-500 px-3 py-2 rounded items-center"> <FaBook/> បាក់ឌុប</a>
-                    <a href="#" className="text-gray-100 hover:bg-orange-500 px-3 px-3 py-2 rounded">ចែករំលែកបទពិសោធន៍</a>
-                    <a href="#" className="text-gray-100 hover:bg-orange-500 px-3 px-3 py-2 rounded">កម្រងវិញ្ញាសារ</a>
-                    <a href="#" className="text-gray-100 hover:bg-orange-500 px-3 px-3 py-2 rounded">FAQs</a>
-                </nav>
+const strategies = [
+  {
+    title: "ការប្រឡង ថ្នាក់ទី១២ ឆ្នាំ២០២៣",
+    image: "https://www.sparkadmissions.com/wp-content/uploads/2020/04/How_to_Get_Good_Grades_in_High_School.jpg",
+    detail: "រយៈពេល៖ ២០០ នាទី",
+  },
+  {
+    title: "សៀវភៅបំពេញលំហាត់វិញ្ញាសា",
+    image: "https://www.sparkadmissions.com/wp-content/uploads/2020/04/How_to_Get_Good_Grades_in_High_School.jpg",
+    detail: "រយៈពេល៖ ២០០ នាទី",
+  },
+  {
+    title: "មេរៀនគន្លឹះជាប់លើកទី១",
+    image: "https://www.rootsofaction.com/wp-content/uploads/2012/09/Good-grades-1.jpg",
+    detail: "រយៈពេល៖ ១០០ នាទី",
+  },
+  {
+    title: "មេរៀនគន្លឹះជាប់លើកទី១",
+    image: "https://myfirstnestegg.com/wp-content/uploads/student-proudly-holds-good-grade.png",
+    detail: "រយៈពេល៖ ១០០ នាទី",
+  },
+];
 
-                {/* Mobile Hamburger */}
-                <div className="md:hidden">
-                    <button
-                        onClick={() => setIsOpen(!isOpen)}
-                        className="text-gray-700 focus:outline-none"
-                        aria-label="Toggle menu"
-                    >
-                        {isOpen ? (
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        ) : (
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        )}
-                    </button>
-                </div>
+function Homepage() {
+  return (
+    <Layout>
+      {/* Banner */}
+      <div className="flex justify-center items-center mb-6">
+        <img
+          src="https://img.freepik.com/free-vector/back-school-cover-illustration-with-education-elements_47987-23351.jpg?semt=ais_hybrid&w=740&q=80"
+          alt="Banner"
+          className="max-h-64 object-cover w-full rounded"
+        />
+      </div>
+
+      {/* Title */}
+      <h2 className="text-2xl font-semibold mb-4">យុទ្ធសាស្រ្តប្រឡងបាក់ឌុប​</h2>
+
+      {/* Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
+        {strategies.map((item, index) => (
+          <div key={index} className="bg-white p-2 rounded-lg shadow-md">
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-full h-40 object-cover rounded mb-3 transition-transform duration-300 hover:scale-105"
+            />
+            <h3 className="text-base font-semibold mb-2 text-gray500">{item.title}</h3>
+            <div className="flex items-center">
+              <div className="p-1 rounded-full bg-customBlue mr-2 text-white">
+                <FaGraduationCap />
+                {/* <GiOpenBook /> */}
+              </div>
+              <p className="text-gray400 text-sm">{item.detail}</p>
             </div>
-
-            {/* Mobile Menu */}
-            {isOpen && (
-                <nav className="md:hidden bg-white shadow-md">
-                    <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-blue-100">Home</a>
-                    <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-blue-100">About</a>
-                    <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-blue-100">Services</a>
-                    <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-blue-100">Contact</a>
-                </nav>
-            )}
-        </header>
-    );
+          </div>
+        ))}
+      </div>
+    </Layout>
+  );
 }
 
-export default HomepageWeb;
+export default Homepage;

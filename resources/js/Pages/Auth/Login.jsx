@@ -67,7 +67,7 @@ export default function Login({ status }) {
             )}
 
             <div className="text-center mb-6">
-                <div className="mx-auto w-20 h-20 overflow-hidden mb-4 flex items-center justify-center">
+                <div className="mx-auto  h-20 overflow-hidden mb-4 flex items-center justify-center">
                     <img
                         src={logo}
                         alt=""

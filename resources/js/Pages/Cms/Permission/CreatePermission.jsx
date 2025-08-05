@@ -4,7 +4,6 @@ import { Modal, Form, Row, Col, Input } from "antd";
 const CreatePermission = ({ open, confirmLoading, onOk, onCancel, editingPermission }) => {
   const [form] = Form.useForm();
 
-  // Reset or populate form fields when modal opens or editingPermission changes
   useEffect(() => {
     if (open) {
       if (editingPermission) {
@@ -22,7 +21,7 @@ const CreatePermission = ({ open, confirmLoading, onOk, onCancel, editingPermiss
     form
       .validateFields()
       .then((values) => {
-        onOk(values); // Pass form values to parent component
+        onOk(values);
       })
       .catch((info) => {
         console.log("Validate Failed:", info);

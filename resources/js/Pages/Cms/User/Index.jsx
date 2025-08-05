@@ -8,12 +8,14 @@ import ToolTipButton from "@/Components/TooltipButton";
 import { useState, useEffect } from "react";
 import { useConfirmModal } from "@/Components/ModalContext";
 import { Col, Row } from "antd";
+import ToastNotification from "@/Components/ToastNotification";
 
-function Index({ auth, users }) {
+function Index({ auth, users, success }) {
+  console.log(success)
   // Confirm modal hook
   const { showModal, contextHolder } = useConfirmModal();
 
-  // Pagination state
+  // Pagination state 
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const totalItems = users.length;
@@ -71,6 +73,7 @@ function Index({ auth, users }) {
           </div>
         }
       >
+        <ToastNotification success={success} routeName="users.index" />
         <Head title="Users" />
 
         <div className="">

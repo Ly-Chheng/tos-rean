@@ -7,9 +7,10 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Middleware\HandleInertiaRequests;
 
-Route::redirect('/', '/dashboard');
+Route::redirect('/', '/homepage');
 
-// Route::get('web/homepage', [App\Http\Controllers\Web\HomepageController::class, 'index'])->name('homepage');
+Route::get('homepage', [App\Http\Controllers\Web\HomepageController::class, 'index'])->name('homepage');
+Route::get('classes', [App\Http\Controllers\Web\ClassController::class, 'index'])->name('classes');
 
 Route::middleware(['auth', 'verified', HandleInertiaRequests::class])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
