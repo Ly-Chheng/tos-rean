@@ -52,7 +52,7 @@ function CreateUser({ auth, roles = [] }) {
                             </h6>
                         </div>
                     </Link>
-                    <h6 className="text-sm text-gray-800 dark:text-gray-200 leading-tight px-1">
+                    <h6 className="text-sm text-blue-600 dark:text-gray-200 leading-tight px-1">
                         / Create User
                     </h6>
                 </div>
