@@ -1,6 +1,6 @@
 import Layout from "./Layout";
 import { FaGraduationCap } from "react-icons/fa";
-import { GiOpenBook } from "react-icons/gi";
+
 
 const strategies = [
   {
@@ -28,7 +28,6 @@ const strategies = [
 function Homepage() {
   return (
     <Layout>
-      {/* Banner */}
       <div className="flex justify-center items-center mb-6">
         <img
           src="https://img.freepik.com/free-vector/back-school-cover-illustration-with-education-elements_47987-23351.jpg?semt=ais_hybrid&w=740&q=80"
@@ -37,29 +36,34 @@ function Homepage() {
         />
       </div>
 
-      {/* Title */}
-      <h2 className="text-2xl font-semibold mb-4">យុទ្ធសាស្រ្តប្រឡងបាក់ឌុប​</h2>
+      <div className="flex justify-between">
+        <h2 className="text-2xl font-semibold mb-4">យុទ្ធសាស្រ្តប្រឡងបាក់ឌុប​</h2>
+        <a href="#" className="text-blue-600">ច្រើនទៀត</a>
+      </div>
+     
 
       {/* Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
-        {strategies.map((item, index) => (
-          <div key={index} className="bg-white p-2 rounded-lg shadow-md">
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-full h-40 object-cover rounded mb-3 transition-transform duration-300 hover:scale-105"
-            />
-            <h3 className="text-base font-semibold mb-2 text-gray500">{item.title}</h3>
-            <div className="flex items-center">
-              <div className="p-1 rounded-full bg-customBlue mr-2 text-white">
-                <FaGraduationCap />
-                {/* <GiOpenBook /> */}
-              </div>
-              <p className="text-gray400 text-sm">{item.detail}</p>
-            </div>
+      <div className="overflow-x-auto">
+  <div className="flex lg:grid lg:grid-cols-4 gap-4 lg:gap-6 min-w-max">
+    {strategies.map((item, index) => (
+      <div key={index} className="bg-white p-2 rounded-lg shadow-md w-[250px] shrink-0 lg:w-auto">
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-full h-40 object-cover rounded mb-3 transition-transform duration-300 hover:scale-105"
+        />
+        <h3 className="text-base font-semibold mb-2 text-gray-500">{item.title}</h3>
+        <div className="flex items-center">
+          <div className="p-1 rounded-full bg-customBlue mr-2 text-white">
+            <FaGraduationCap />
           </div>
-        ))}
+          <p className="text-gray-400 text-sm">{item.detail}</p>
+        </div>
       </div>
+    ))}
+  </div>
+</div>
+
     </Layout>
   );
 }

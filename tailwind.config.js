@@ -18,6 +18,7 @@ export default {
             },
             colors: {
                 customBlue: '#0A96A4',
+                customBlue100: '#077a85ff',
                 gray400:'#888888ff',
                 gray500:'#646464ff'
             },
