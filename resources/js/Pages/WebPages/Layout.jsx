@@ -4,7 +4,7 @@ function Layout({ children }) {
   return (
     <>
       <Navbar />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-2 py-8">
         {children}
       </main>
     </>

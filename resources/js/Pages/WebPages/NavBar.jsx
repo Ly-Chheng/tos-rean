@@ -2,31 +2,33 @@ import { useState } from 'react';
 import { Link } from '@inertiajs/react';
 import { FaBook, FaUsers, FaQuestionCircle } from 'react-icons/fa';
 import logo from '../../assets/images/logo.png';
+import { GiOpenBook, GiBookCover, GiTeacher } from "react-icons/gi";
+import { IoSettingsOutline } from "react-icons/io5";
 
 // Define your menu items
 const menuItems = [
   {
     name: 'រៀនត្រៀម',
     route: 'homepage',
-    icon: FaBook,
+    icon: GiOpenBook,
     permission: null,
   },
   {
     name: 'សៀវភៅ',
     route: 'classes',
-    icon: FaUsers,
+    icon: GiBookCover,
     permission: null,
   },
   {
     name: 'ថ្នាក់រៀន',
     route: 'classes',
-    icon: FaQuestionCircle,
+    icon: GiTeacher,
     permission: null,
   },
   {
     name: 'ការកំណត់',
     route: 'classes',
-    icon: FaUsers,
+    icon: IoSettingsOutline,
     permission: null,
   }
 ];
@@ -53,9 +55,9 @@ function Navbar() {
                   <Link
                     key={index}
                     href={route(item.route)}
-                    className="group flex items-center gap-2 text-gray500 hover:text-blue-600 px-4 py-2 rounded transition duration-200"
+                    className="group flex items-center gap-2 text-gray-500 hover:text-blue-600 px-4 py-2 rounded transition duration-200"
                   >
-                    <div className="w-10 h-10 bg-blue-200 rounded-full flex items-center justify-center text-black">
+                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-customBlue100">
                       {Icon && <Icon className="text-xl" />}
                     </div>
                     <div className="flex flex-col">
@@ -63,7 +65,6 @@ function Navbar() {
                       <div className="h-1 w-full bg-blue-600 rounded origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
                     </div>
                   </Link>
-
                 );
               }
               return null;
@@ -95,7 +96,7 @@ function Navbar() {
       </nav>
 
       {/* Padding space for content */}
-      <div className="sm:pt-5 md:pt-20 pb-16 md:pb-0" />
+      <div className="sm:pt-5 md:pt-20 pb-16 md:pb-0 sm:pl-3" />
     </>
   );
 }
