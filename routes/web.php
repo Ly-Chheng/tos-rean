@@ -11,12 +11,13 @@ Route::redirect('/', '/homepage');
 
 Route::get('homepage', [App\Http\Controllers\Web\HomepageController::class, 'index'])->name('homepage');
 Route::get('classes', [App\Http\Controllers\Web\ClassController::class, 'index'])->name('classes');
+Route::get('books', [App\Http\Controllers\Web\BookController::class, 'index'])->name('books');
 
 Route::middleware(['auth', 'verified', HandleInertiaRequests::class])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('faqs', App\Http\Controllers\Frontend\FaqsController::class);
     Route::resource('users', App\Http\Controllers\Auth\UserController::class);
-    Route::resource('books', App\Http\Controllers\Frontend\BookController::class);
+    Route::resource('cmsbook', App\Http\Controllers\Frontend\BookController::class);
     Route::resource('permission', App\Http\Controllers\Auth\PermissionController::class);
     Route::resource('roles', App\Http\Controllers\Auth\RoleController::class);
     Route::get('/lock-screen', [App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'showLockScreen'])->name('lock-screen');    

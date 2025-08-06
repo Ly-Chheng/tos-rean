@@ -15,7 +15,7 @@ const menuItems = [
   },
   {
     name: 'សៀវភៅ',
-    route: 'classes',
+    route: 'books',
     icon: GiBookCover,
     permission: null,
   },

@@ -1,6 +1,7 @@
 import Layout from "./Layout";
 import { FaGraduationCap } from "react-icons/fa";
 import SectionHeader from "@/Components/SectionHeader";
+import image from '../../assets/images/beltei_podcast.png';
 
 
 const strategies = [
@@ -23,7 +24,7 @@ const strategies = [
     title: "មេរៀនគន្លឹះជាប់លើកទី១",
     image: "https://myfirstnestegg.com/wp-content/uploads/student-proudly-holds-good-grade.png",
     detail: "រយៈពេល៖ ១០០ នាទី",
-  },
+  }
 ];
 
 const students = [
@@ -90,9 +91,6 @@ function Homepage() {
         <a href="#" className="text-blue-600">ច្រើនទៀត</a>
       </div>
 
-
-      {/* Cards */}
-      {/* Cards Section */}
       <div className="overflow-x-auto scrollbar-hide">
         <div className="flex gap-4 px-4 min-w-fit lg:grid lg:grid-cols-4 lg:gap-6 lg:px-0">
           {strategies.map((item, index) => (
@@ -119,7 +117,6 @@ function Homepage() {
         </div>
       </div>
 
-
       <SectionHeader title="បទបង្ហាញរបស់ សិស្សនិទ្ទេស A" linkText="ច្រើនទៀត" href="#" />
       <div className="overflow-x-auto scrollbar-hide sm:mt-1 lg:mt-2">
         <div className="flex px-6 justify-center gap-x-6 md:gap-x-10 lg:gap-x-12">
@@ -135,13 +132,16 @@ function Homepage() {
           ))}
         </div>
       </div>
+      <div className="pt-10 flex justify-start">
+        <img src={image} alt="Beltei Podcast" className="w-full max-w-4xl" />
+      </div>
 
       <SectionHeader title="BELTEI IU Talk Show" linkText="ច្រើនទៀត" href="#" />
-      <div className="grid  lg:grid-cols-2  md:grid-cols-2 gap-6 lg:px-24 px-6">
+      <div className="grid  lg:grid-cols-3  md:grid-cols-2 gap-10 lg:px-24 px-6">
         {videos.map((video, index) => (
           <div
             key={index}
-            className="bg-white shadow-md rounded-lg p-2 w-full lg:mb-2 sm:mb-1"
+            className="bg-white shadow-md rounded-lg p-2 w-full lg:mb-3 sm:mb-1"
           >
             <div className="aspect-video w-full overflow-hidden rounded">
               <iframe
