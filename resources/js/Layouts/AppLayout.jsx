@@ -1,8 +1,7 @@
 import { useState } from "react";
-import ApplicationLogo from "@/Components/ApplicationLogo";
-import Dropdown from "@/Components/Dropdown";
-import NavLink from "@/Components/NavLink";
-import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
+import Logo from "../assets/logo/react.png";
+import Dropdown from "@/components/Dropdown";
+import NavLink from "@/components/NavLink";
 import { Link } from "@inertiajs/react";
 
 export default function AuthenticatedLayout({ user, header, children }) {
@@ -10,21 +9,16 @@ export default function AuthenticatedLayout({ user, header, children }) {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex">
-      {/* Sidebar */}
-      <div
-        className={`${
+      <div className={`${
           sidebarOpen ? "w-64" : "w-20"
         } min-h-screen bg-white dark:bg-gray-800 border-r border-gray-100 dark:border-gray-700 transition-all duration-300 ease-in-out`}
       >
         <div className="flex flex-col h-full">
-          {/* Logo */}
           <div className="p-4 flex items-center justify-between">
             <Link href="/">
-              <ApplicationLogo
-                className={`${
+              <img src={Logo} alt="Logo" className={`${
                   sidebarOpen ? "w-auto" : "w-10"
-                } h-9 fill-current text-gray-800 dark:text-gray-200 transition-all duration-300`}
-              />
+              } h-9 fill-current text-gray-800 dark:text-gray-200 transition-all duration-300`} />
             </Link>
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -209,9 +203,9 @@ export default function AuthenticatedLayout({ user, header, children }) {
               </Dropdown.Trigger>
 
               <Dropdown.Content>
-                <Dropdown.Link href={route("profile.edit")}>Profile</Dropdown.Link>
+                <Dropdown.Link href={route("profile.edit")}>ប្រវត្តិរូប</Dropdown.Link>
                 <Dropdown.Link href={route("logout")} method="post" as="button">
-                  Log Out
+                  ចាកចេញ
                 </Dropdown.Link>
               </Dropdown.Content>
             </Dropdown>

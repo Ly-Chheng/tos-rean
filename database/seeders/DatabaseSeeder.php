@@ -14,22 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
         $this->call(PermissionTableSeeder::class);
         $this->call(AdminTableSeeder::class);
-        // User::factory()->create([
-        //     'id' => 1,
-        //     'name' => 'Zura',
-        //     'email' => 'zura@example.com',
-        //     'password' => bcrypt('123.321A'),
-        //     'email_verified_at' => time()
-        // ]);
-        // User::factory()->create([
-        //     'id' => 2,
-        //     'name' => 'John Smith',
-        //     'email' => 'john@example.com',
-        //     'password' => bcrypt('123.321A'),
-        //     'email_verified_at' => time()
-        // ]);
     }
 }

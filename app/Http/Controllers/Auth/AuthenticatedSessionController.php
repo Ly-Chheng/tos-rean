@@ -5,18 +5,18 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Validation\ValidationException; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
-use Illuminate\Validation\ValidationException; 
 
 class AuthenticatedSessionController extends Controller
 {
     public function create(): Response
     {
-        return Inertia::render('Auth/Login', [
+        return Inertia::render('Backend/auth/login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
         ]);
@@ -25,20 +25,15 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
-
         return redirect()->intended(route('dashboard', absolute: false));
     }
 
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 
@@ -47,8 +42,7 @@ class AuthenticatedSessionController extends Controller
         if (!$request->session()->get('is_locked', false)) {
             return redirect()->intended(route('dashboard'));
         }
-
-        return Inertia::render('Auth/LockScreen', [
+        return Inertia::render('auth/lockscreen', [
             'user' => $request->user()->only('id', 'name', 'email', 'profile_photo_url'),
         ]);
     }
@@ -58,7 +52,6 @@ class AuthenticatedSessionController extends Controller
         $request->validate([
             'password' => 'required|string',
         ]);
-
         if (!Auth::validate([
             'email' => $request->user()->email,
             'password' => $request->password,
@@ -67,7 +60,6 @@ class AuthenticatedSessionController extends Controller
                 'password' => ['The provided password is incorrect.'],
             ]);
         }
-
         $request->session()->forget('is_locked');
         return redirect()->intended(route('dashboard'));
     }

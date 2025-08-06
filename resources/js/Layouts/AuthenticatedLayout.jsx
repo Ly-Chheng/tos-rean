@@ -1,10 +1,9 @@
 import { useState, useEffect, memo } from "react";
+import Swal from "sweetalert2";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import Main from "./Main";
-import Footer from "./Footer";
 import useInactivityRedirect from "../hook/useInactivityRedirect";
-import Swal from "sweetalert2"; // Import SweetAlert2
 
 function AuthenticatedLayout({ user, header, children }) {
     useInactivityRedirect();
@@ -55,14 +54,10 @@ function AuthenticatedLayout({ user, header, children }) {
                 <div className="flex-1 flex flex-col">
                     <Header user={user} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} theme={theme} setTheme={setTheme} />
                     <Main header={header}>{children}</Main>
-                    {/* <Footer /> */}
                 </div>
             </div>
             {sidebarOpen && (
-                <div
-                    className="fixed inset-0 bg-gray-600 bg-opacity-75 z-30 md:hidden"
-                    onClick={() => setSidebarOpen(false)}
-                />
+                <div className="fixed inset-0 bg-gray-600 bg-opacity-75 z-30 md:hidden" onClick={() => setSidebarOpen(false)} />
             )}
         </div>
     );

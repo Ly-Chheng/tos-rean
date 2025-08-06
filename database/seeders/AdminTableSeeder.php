@@ -14,8 +14,8 @@ class AdminTableSeeder extends Seeder
         $role = Role::create(['name' => 'lani']);
         $user = User::create([
             'roles_id' => $role->id,
-            'name' => 'Admin',
-            'email' => 'lani@gmail.com',
+            'name' => 'ROOT',
+            'email' => 'root@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('123456')
         ]);

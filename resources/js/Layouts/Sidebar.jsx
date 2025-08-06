@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, usePage, router } from "@inertiajs/react";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import ApplicationLogo from "@/Components/ApplicationLogo";
+import Logo from "../assets/logo/react.png";
 import {
   LayoutDashboard,
   Users,
@@ -12,16 +12,7 @@ import {
   Search,
   Book,
   Lock,
-  FileText,
-  BookOpen,
-  GraduationCap,
-  Archive,
-  Settings,
-  ChartPie,
-  ChartBar
 } from "lucide-react";
-import logo from "../assets/images/logo.png";
-
 
 function DraggableMenuItem({ menu, index, moveMenuItem, permissions, openDropdown, toggleDropdown }) {
   const [{ isDragging }, drag] = useDrag({
@@ -148,31 +139,16 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
       permission: null,
     },
     {
-      name: "សៀវភៅ",
-      route: "books.index",
-      icon: Book,
-      permission: null,
-    },
-
-    {
       name: "ការគ្រប់គ្រង",
       icon: Users,
       permission: null,
       items: [
-        { name: "Permission", route: "permission.index", permission: null },
-        { name: "Role", route: "roles.index", permission: null },
-        { name: "User", route: "users.index", permission: null },
+        { name: "ការអនុញ្ញាត", route: "permission.index", permission: null },
+        { name: "តួនាទី", route: "roles.index", permission: null },
+        { name: "អ្នកប្រើប្រាស់", route: "users.index", permission: null },
         
       ],
     },
-    {
-      name: "FAQs",
-      route: "faqs.index",
-      icon: Users,
-      permission: null,
-    },
-
-   
     {
       name: "ចាក់សោអេក្រង់",
       icon: Lock,
@@ -297,8 +273,8 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
         <div className="flex flex-col h-screen">
           <div className="flex items-center justify-between px-4 py-4 bg-[#3465f4]">
              <Link href="/" className="flex items-center">
-              <ApplicationLogo className="h-8 w-auto fill-current text-white" />
-              <span className="ml-2 text-white font-semibold text-lg">Backend Name</span>
+              <img src={Logo} alt="Logo" className="h-8 w-auto fill-current text-white"/>
+              <span className="ml-2 text-white font-semibold text-lg">តោះរៀន!</span>
             </Link>
             <button
               className="md:hidden text-white"

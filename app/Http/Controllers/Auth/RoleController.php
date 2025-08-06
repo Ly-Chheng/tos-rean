@@ -12,7 +12,7 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::with('permissions')->get();
-        return inertia('Cms/Roles/Index', [
+        return inertia('Backend/roles/index', [
             'roles' => $roles,
             'success' => session('success'),
         ]);
@@ -21,7 +21,7 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = Permission::all(['id', 'name']);
-        return inertia('Cms/Roles/CreateRole', [
+        return inertia('Backend/roles/create', [
             'permissions' => $permissions
         ]);
     }
@@ -49,7 +49,7 @@ class RoleController extends Controller
         $role = Role::with('permissions')->findOrFail($id);
         $permissions = $role->permissions->pluck('name')->toArray();
 
-        return inertia('Cms/Roles/ShowRole', [
+        return inertia('Backend/roles/show', [
             'role' => $role,
             'permissions' => $permissions,
         ]);
@@ -61,7 +61,7 @@ class RoleController extends Controller
         $permissions = Permission::all(['id', 'name']);
         $rolePermissions = $role->permissions->pluck('id')->toArray();
 
-        return inertia('Cms/Roles/UpdateRole', [
+        return inertia('Backend/roles/edit', [
             'role' => $role,
             'permissions' => $permissions,
             'rolePermissions' => $rolePermissions,

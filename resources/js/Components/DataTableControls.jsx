@@ -1,6 +1,6 @@
 import { useState } from "react";
-import TextInput from "@/Components/TextInput";
-import SelectWithSearch from "@/Components/SelectWithSearch";
+import TextInput from "@/components/TextInput";
+import SelectWithSearch from "@/components/SelectWithSearch";
 import { router } from "@inertiajs/react";
 
 export default function DataTableControls({

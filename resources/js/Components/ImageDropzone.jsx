@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
-import InputError from "@/Components/InputError";
+import InputError from "@/components/InputError";
 import { X } from "lucide-react";
 
 const ImageDropzone = ({

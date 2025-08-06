@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
-import InputLabel from '@/Components/InputLabel';
-import InputError from '@/Components/InputError';
+import InputLabel from '@/components/InputLabel';
+import InputError from '@/components/InputError';
 
 const SelectWithSearch = ({
   id = 'select',

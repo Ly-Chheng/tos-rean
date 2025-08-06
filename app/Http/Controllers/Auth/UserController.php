@@ -11,33 +11,29 @@ use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
        $users = User::with('role')->orderBy('id', 'desc')->get();
-        return inertia('Cms/User/Index', [
+        return inertia('Backend/users/index', [
             'success' => session('success'),
             'users' => $users->map(function ($user) {
-                // log($user);
                 return [
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-                'status' => $user->status,
-                'roles' => $user->role ? $user->role->name : 'No Role',
-                'created_at' => $user->created_at ? $user->created_at->toDateTimeString() : 'N/A',
-                'updated_at' => $user->updated_at ? $user->updated_at->toDateTimeString() : 'N/A',
-                'phone' => $user->phone ?: 'N/A'
-            ];
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'status' => $user->status,
+                    'roles' => $user->role ? $user->role->name : 'No Role',
+                    'created_at' => $user->created_at ? $user->created_at->toDateTimeString() : 'N/A',
+                    'updated_at' => $user->updated_at ? $user->updated_at->toDateTimeString() : 'N/A',
+                    'phone' => $user->phone ?: 'N/A'
+                ];
             }),
         ]);
     }
 
     public function create()
     {
-        return inertia('Cms/User/CreateUser', [
+        return inertia('Backend/users/create', [
             'roles' => Role::all()->map(function ($role) {
                 return [
                     'id' => $role->id,
@@ -58,19 +54,12 @@ class UserController extends Controller
             'roles_id' => $validated['roles_id'],
             'password' => Hash::make($validated['password']),
         ]);
-
         return to_route("users.index")->with('success', 'User created successfully!');
-        
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $user = User::with('roles')->findOrFail($id);
-
-        return inertia('Cms/User/Show', [
+        return inertia('Backend/user/show', [
             'user' => [
                 'id' => $user->id,
                 'name' => $user->name,
@@ -85,9 +74,6 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         return inertia('Cms/User/UpdateUser', [
@@ -101,7 +87,6 @@ class UserController extends Controller
         ]);
     }
 
-   
     public function update(Request $request, string $id)
     {
         $user = User::findOrFail($id);
@@ -114,32 +99,21 @@ class UserController extends Controller
             'active' => 'boolean',
         ]);
 
-        // Update user fields
         $user->name = $validated['name'];
         $user->email = $validated['email'];
-        $user->status = $validated['active'] ? 1 : 0; // Map boolean to 0/1
-
-        // Update password only if provided
+        $user->status = $validated['active'] ? 1 : 0;
         if (!empty($validated['password'])) {
             $user->password = Hash::make($validated['password']);
         }
-
         $user->save();
-
-        // Sync roles using Spatie
         $user->syncRoles([$validated['roles']]);
-
         return to_route('users.index')->with('success', 'User updated successfully!');
     }   
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $user = User::findOrFail($id);
         $user->delete();
-
         return redirect()->route("users.index")->with('success', 'User deleted successfully!');
     }
 }

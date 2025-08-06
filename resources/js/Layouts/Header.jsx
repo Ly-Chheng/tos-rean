@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
-import { Menu, Sun, Moon, LogOut, Edit, User, Settings, X, RefreshCcw} from "lucide-react";
-import Dropdown from "@/Components/Dropdown";
+import { Menu, Sun, Moon, LogOut, X, RefreshCcw} from "lucide-react";
+import Dropdown from "@/components/Dropdown";
 import { router, usePage, useForm } from "@inertiajs/react";
-import InputError from "@/Components/InputError";
-import InputLabel from "@/Components/InputLabel";
-import TextInput from "@/Components/TextInput";
-import SelectInput from "@/Components/SelectInput";
+import InputError from "@/components/InputError";
+import InputLabel from "@/components/InputLabel";
+import TextInput from "@/components/TextInput";
+import { route } from 'ziggy-js';
+import Avatar1 from "../assets/images/avatars/avatar1.png";
+import Avatar2 from "../assets/images/avatars/avatar2.png";
+import Avatar3 from "../assets/images/avatars/avatar3.png";
 
 export default function Header({
   sidebarOpen,
@@ -13,11 +16,10 @@ export default function Header({
   theme,
   setTheme,
 }) {
-  const { auth, allRoles } = usePage().props;
+  const { auth } = usePage().props;
   const user = auth.user;
-
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
   const { data, setData, put, processing, errors, reset } = useForm({
     name: user.name,
     email: user.email,
@@ -34,15 +36,6 @@ export default function Header({
     });
   };
 
-  const getInitials = (name) => {
-    return name
-      .split(' ')
-      .map(part => part[0])
-      .join('')
-      .toUpperCase()
-      .substring(0, 2);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     put(route("user.update", user.id), {
@@ -55,7 +48,6 @@ export default function Header({
     });
   };
 
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
@@ -73,12 +65,9 @@ export default function Header({
   );
 
   const avatars = [
-    "/assets/avatars/avatar1.png",
-    "/assets/avatars/avatar2.png",
-    "/assets/avatars/avatar3.png",
-    "/assets/avatars/avatar4.png",
-    "/assets/avatars/avatar5.png",
-    "/assets/avatars/avatar6.png",
+    Avatar1,
+    Avatar2,
+    Avatar3,
   ];
 
   return (
@@ -148,19 +137,12 @@ export default function Header({
                 </button>
               </Dropdown.Trigger>
               <Dropdown.Content className="mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg py-2 border border-gray-100 dark:border-gray-700">
-                {/* <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="flex items-center w-full px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
-                >
-                  <Edit size={20} className="mr-3" />
-                  Edit Profile
-                </button> */}
                 <button
                   onClick={handleLogout}
                   className="flex items-center w-full px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
                 >
                   <LogOut size={20} className="mr-3" />
-                  Logout
+                  ចាកចេញ
                 </button>
               </Dropdown.Content>
             </Dropdown>
@@ -299,7 +281,7 @@ export default function Header({
             </button>
 
             <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
-              Choose Your Avatar
+              ជ្រើសរើស Avatar របស់អ្នក
             </h2>
 
             <div className="grid grid-cols-3 gap-4">
