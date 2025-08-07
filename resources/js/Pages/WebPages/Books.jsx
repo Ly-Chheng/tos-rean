@@ -1,4 +1,4 @@
-import Layout from "../Layout";
+import Layout from "./Layout";
 import SectionHeader from "@/Components/SectionHeader";
 import { FaGraduationCap, FaSearch, FaFilter } from "react-icons/fa";
 import HoverCard from "@/Components/HoverCard";

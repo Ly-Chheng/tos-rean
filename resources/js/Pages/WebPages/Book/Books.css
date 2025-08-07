@@ -1,4 +1,0 @@
-
-.book-card {
-  @apply bg-pink-200 p-4 rounded-lg shadow h-[150px] w-[250px] flex flex-col items-center;
-}
