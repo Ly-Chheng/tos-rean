@@ -2,7 +2,7 @@ import Layout from "./Layout";
 import { FaGraduationCap } from "react-icons/fa";
 import SectionHeader from "@/Components/SectionHeader";
 import image from '../../assets/images/beltei_podcast.png';
-
+import Slider from "@/Components/Slider";
 
 const strategies = [
   {
@@ -56,6 +56,11 @@ const videos = [
     videoUrl: "https://www.youtube.com/embed/bpFHTq529ME",
   },
   {
+    title: "បទបង្ហាញ៖ ការរៀនដើម្បីទទួលបាននិទ្ទេស A",
+    duration: "15 នាទី",
+    videoUrl: "https://www.youtube.com/embed/bpFHTq529ME",
+  },
+  {
     title: "បទបង្ហាញ៖ យុទ្ធសាស្រ្តសិក្សាថ្នាក់ទី១២",
     duration: "20 នាទី",
     videoUrl: "https://www.youtube.com/watch?v=VIDEO_ID",
@@ -75,16 +80,13 @@ const dataList = [
 
 
 
+
+
 function Homepage() {
   return (
     <Layout>
-      <div className="flex justify-center items-center mb-6">
-        <img
-          src="https://img.freepik.com/free-vector/back-school-cover-illustration-with-education-elements_47987-23351.jpg?semt=ais_hybrid&w=740&q=80"
-          alt="Banner"
-          className="max-h-64 object-cover w-full rounded"
-        />
-      </div>
+      
+      <Slider/>
 
       <div className="flex justify-between">
         <h2 className="text-xl font-semibold mb-4">យុទ្ធសាស្រ្តប្រឡងបាក់ឌុប​</h2>
@@ -135,9 +137,8 @@ function Homepage() {
       <div className="pt-10 flex justify-start">
         <img src={image} alt="Beltei Podcast" className="w-full max-w-4xl" />
       </div>
-
       <SectionHeader title="BELTEI IU Talk Show" linkText="ច្រើនទៀត" href="#" />
-      <div className="grid  lg:grid-cols-3  md:grid-cols-2 gap-10 lg:px-24 px-6">
+      <div className="grid  lg:grid-cols-3  md:grid-cols-2 gap-3 sm:gap-5 md:gap-10 lg:px-24 px-6">
         {videos.map((video, index) => (
           <div
             key={index}
@@ -173,7 +174,7 @@ function Homepage() {
           ))}
         </div>
       </div>
-
+          
     </Layout>
   );
 }

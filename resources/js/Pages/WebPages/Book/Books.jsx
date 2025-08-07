@@ -17,8 +17,35 @@ const stemBooks = [
   { title: "The Maze Runner", genre: "Dystopian Fiction", image: "https://m.media-amazon.com/images/I/817BQY9AkfL._SY522_.jpg" },
   { title: "The Maze Runner", genre: "Dystopian Fiction", image: "https://m.media-amazon.com/images/I/817BQY9AkfL._SY522_.jpg" },
 ];
+const categories = [
+  {
+    title: "Romantic Novels",
+    image: "https://pixy.org/download/588319/",
+  },
+  {
+    title: "Children's Books",
+    image: "https://clipart-library.com/img/675422.png",
+  },
+  {
+    title: "Animal Adventures",
+    image: "https://www.pngkey.com/png/full/51-510953_tortoise-sea-turtle-reading-a-book.png",
+  },
+  {
+    title: "Wildlife Stories",
+    image: "https://static.vecteezy.com/system/resources/thumbnails/020/647/524/small_2x/lion-face-icon-cute-animal-icon-in-circle-png.png",
+  },
+  {
+    title: "Fantasy Fiction",
+    image: "https://cdn-icons-png.freepik.com/256/1841/1841047.png?semt=ais_white_label",
+  },
+  {
+    title: "Love Story Classics",
+    image: "https://cdn-icons-png.freepik.com/256/2759/2759168.png?semt=ais_white_label",
+  },
+];
 
 const colors = ['bg-blue-500', 'bg-green-500', 'bg-purple-500', 'bg-yellow-500', 'bg-red-500'];
+
 
 function Books() {
   return (
@@ -73,10 +100,10 @@ function Books() {
         ))}
       </div>
       <div class="flex flex-col md:flex-row mx-auto p-4 gap-4 mt-3">
-        <div class="bg-gray-50 shadow-md w-full lg:w-1/2 p-4 rounded-lg flex items-center">
+        <div class="bg-gray-100 shadow-md w-full lg:w-1/2 p-4 rounded-lg flex items-center">
           <div class="w-full">
             <div class="flex justify-start">
-              <h2 class="text-lg lg:text-2xl font-bold text-gray-800">សៀវភៅ STEM</h2>
+              <h2 class="text-xl lg:text-3xl font-bold text-black">ចំណេះដឹងទូទៅ</h2>
             </div>
             <div class="flex justify-center">
               <img
@@ -88,9 +115,9 @@ function Books() {
           </div>
         </div>
         <div class="w-full lg:w-1/2 flex flex-col gap-4">
-          <div class="bg-blue-200 p-4 rounded-lg h-32">
+          <div class="bg-blue-300 p-4 rounded-lg h-32">
             <div class="flex justify-between items-center">
-              <h2 class="text-sm lg:text-xl font-semibold text-white">
+              <h2 class="text-lg lg:text-2xl font-semibold text-white">
                 កម្រងសំណួរ ចម្លើយត្រៀមបាក់ឌុប
               </h2>
               <img
@@ -100,7 +127,7 @@ function Books() {
               />
             </div>
           </div>
-          <div class="bg-customBlue p-4 rounded-lg h-32 text-white flex items-center text-base lg:text-xl">
+          <div class="bg-customBlue p-4 rounded-lg h-32 text-white flex items-center text-lg lg:text-2xl">
             អក្សរសិល្ប៍ខ្មែរ តែងសេចក្តី
           </div>
         </div>
@@ -123,23 +150,23 @@ function Books() {
           ))}
         </div>
       </div>
-      <div className="flex justify-center items-center mt-3 md-3 text-xl font-bold">10 000 0 Books in 15 Cagegory</div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 px-4 mt-3 justify-center items-center" >
-        <div className="flex flex-col">
-          <div className="flex flex-col items-center gap-4 bg-slate-400">
-            <img src="" alt="no" className="h-10 w-10 md:w-16 md:h-16 object-contain mb-4" />
+      <div className="flex justify-center items-center mt-5 md-3 sm:md-6 text-xl font-bold">10 000 0 Books in 15 Cagegory</div>
+      <div className="items-center justify-center gap-3 sm:gap-4 mt-4 md:mt-4 px-4 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        {categories.map((item, index) => (
+          <div key={index} className="flex flex-col items-center">
+            <div className="border border-gray-300 shadow-sm flex items-center justify-center rounded-lg">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="sm:h-[150px] sm:w-[150px] h-[100px] w-[100px] object-contain p-4"
+              />
+            </div>
+            <p className="mt-2 text-center font-medium">{item.title}</p>
           </div>
-
-          <p>Love Story</p>
-        </div>
-        <div className="flex flex-col">
-          <div className="flex flex-col items-center gap-4 bg-slate-600">
-            <img src="" alt="no" className="h-10 w-10 md:w-16 md:h-16 object-contain mb-4" />
-          </div>
-
-          <p>Love Story</p>
-        </div>
+        ))}
       </div>
+
+      <div className="h-10"></div>
     </Layout>
   );
 }
