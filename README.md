@@ -8,6 +8,7 @@
 # php artisan db:seed --class=AdminTableSeeder
 # composer require tightenco/ziggy
 # npm install tailwind-scrollbar-hide
+# npm install swiper
 
 
 
