@@ -85,9 +85,7 @@ const dataList = [
 function Homepage() {
   return (
     <Layout>
-      
       <Slider/>
-
       <div className="flex justify-between">
         <h2 className="text-xl font-semibold mb-4">យុទ្ធសាស្រ្តប្រឡងបាក់ឌុប​</h2>
         <a href="#" className="text-blue-600">ច្រើនទៀត</a>

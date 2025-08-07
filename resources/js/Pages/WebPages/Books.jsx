@@ -154,7 +154,7 @@ function Books() {
       <div className="items-center justify-center gap-3 sm:gap-4 mt-4 md:mt-4 px-4 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         {categories.map((item, index) => (
           <div key={index} className="flex flex-col items-center">
-            <div className="border border-gray-300 shadow-sm flex items-center justify-center rounded-lg">
+            <div className="border border-gray-300 shadow-sm hover:bg-pink-50  flex items-center justify-center rounded-lg">
               <img
                 src={item.image}
                 alt={item.title}
