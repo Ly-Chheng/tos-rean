@@ -1,48 +1,143 @@
 import Layout from "../Layout";
 import SectionHeader from "@/Components/SectionHeader";
+import { FaGraduationCap, FaSearch, FaFilter } from "react-icons/fa";
+import HoverCard from "@/Components/HoverCard";
 
-const bookItems = [
-  {
-    title: "គណិតវិទ្យា",
-    image: "https://cdn-icons-png.freepik.com/512/4720/4720458.png",
-  },
-  {
-    title: "កម្រងវិញ្ញ្ញាសារឆ្នាំចាស់",
-    image: "https://cdn-icons-png.flaticon.com/512/2106/2106584.png",
-  },
-  {
-    title: "វេយ្យាករណ៍",
-    image: "https://icon-library.com/images/grammar-icon/grammar-icon-16.jpg",
-  },
-  {
-    title: "សៀវភៅជា Audio",
-    image: "https://cdn-icons-png.flaticon.com/512/4539/4539103.png",
-  },
+const bookCategories = [
+  { title: "គណិតវិទ្យា", image: "https://cdn-icons-png.freepik.com/512/4720/4720458.png" },
+  { title: "កម្រងវិញ្ញ្ញាសារឆ្នាំចាស់", image: "https://cdn-icons-png.flaticon.com/512/2106/2106584.png" },
+  { title: "វេយ្យាករណ៍", image: "https://icon-library.com/images/grammar-icon/grammar-icon-16.jpg" },
+  { title: "សៀវភៅជា Audio", image: "https://cdn-icons-png.flaticon.com/512/4539/4539103.png" },
 ];
+
+const stemBooks = [
+  { title: "The Hunger Games", genre: "Dystopian Fiction", image: "https://m.media-amazon.com/images/I/817BQY9AkfL._SY522_.jpg" },
+  { title: "Catching Fire", genre: "ប្រាជ្ញាជីវិត", image: "https://mindbooks.com.kh/storage/nbQvZrNki9gL2pNR5rX1OBmmbRS5FEtbH65Q9ttf.jpeg" },
+  { title: "Mockingjay", genre: "Kid Story Zone", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQALD-u3CtIHfRsZ0tIhbHVgWAPLcdt3cRitw&s" },
+  { title: "The Maze Runner", genre: "Dystopian Fiction", image: "https://m.media-amazon.com/images/I/817BQY9AkfL._SY522_.jpg" },
+  { title: "The Maze Runner", genre: "Dystopian Fiction", image: "https://m.media-amazon.com/images/I/817BQY9AkfL._SY522_.jpg" },
+];
+
+const colors = ['bg-blue-500', 'bg-green-500', 'bg-purple-500', 'bg-yellow-500', 'bg-red-500'];
 
 function Books() {
   return (
     <Layout>
       <SectionHeader title="ប្រភេទសៀវភៅ" linkText="" href="#" />
-      <div className="overflow-x-auto scrollbar-hide">
-        <div className="flex justify-center gap-6 py-4">
-          {bookItems.map((item, index) => (
+      <div className="overflow-x-auto scrollbar-hide px-4">
+        <div className="flex gap-4 md:gap-6 py-2 min-w-fit justify-center">
+          {bookCategories.map((item, index) => (
             <div
               key={index}
-              className="bg-pink-200 p-4 rounded-lg shadow flex flex-col items-center justify-center 
-                        max-w-[250px] h-auto min-h-[150px] w-full sm:max-w-[160px] sm:min-h-[90px] 
-                        md:max-w-[250px] md:min-h-[150px]"
+              className="bg-pink-200 p-4 rounded-lg shadow-md flex flex-col items-center justify-center
+                         min-w-[160px] sm:min-w-[160px] md:min-w-[200px] lg:min-w-[230px] 
+                         hover:bg-pink-300 transition duration-200"
             >
               <img
                 src={item.image}
-                alt={item.title}
-                className="w-2/5 h-auto mb-2 max-w-[80px] sm:max-w-[60px] md:max-w-[80px]"
+                alt={`${item.title} book category icon`}
+                className="h-10 w-10 md:w-16 md:h-16 object-contain mb-4"
               />
-              <p className="text-sm font-semibold text-gray-700 text-center mt-2">
+              <p className="text-center text-gray-800 font-medium text-sm md:text-base">
                 {item.title}
               </p>
             </div>
           ))}
+        </div>
+      </div>
+      <div className="flex justify-end items-center gap-2 mt-6 mb-4">
+        <div className="relative w-[200px] sm:w-[250px] md:w-[300px] lg:w-[350px]">
+          <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+          <input
+            type="text"
+            placeholder="ស្វែងរក..."
+            className="h-10 w-full pl-10 pr-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-customBlue"
+          />
+        </div>
+        <button className="h-10 w-10 flex items-center justify-center rounded bg-gray-300 text-white">
+          <FaFilter />
+        </button>
+      </div>
+
+      <SectionHeader title="STEM ប្រចាំថ្ងៃ" linkText="មើលទាំងអស់" href="#" />
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 px-4">
+        {stemBooks.map((book, index) => (
+          <div key={index} className="flex flex-col items-center gap-4">
+            <img
+              src={book.image}
+              alt={`${book.title} book cover`}
+              className="shadow-md rounded-lg min:w-[120px] min:h-[180px] w-[160px] h-[220px] lg:w-[200px] lg:h-[300px] object-cover hover:scale-105 duration-300"
+            />
+            <p className="text-center text-gray-700 text-sm sm:text-base">{book.genre}</p>
+          </div>
+        ))}
+      </div>
+      <div class="flex flex-col md:flex-row mx-auto p-4 gap-4 mt-3">
+        <div class="bg-gray-50 shadow-md w-full lg:w-1/2 p-4 rounded-lg flex items-center">
+          <div class="w-full">
+            <div class="flex justify-start">
+              <h2 class="text-lg lg:text-2xl font-bold text-gray-800">សៀវភៅ STEM</h2>
+            </div>
+            <div class="flex justify-center">
+              <img
+                src="https://png.pngtree.com/png-clipart/20230913/original/pngtree-read-aloud-vector-png-image_11064937.png"
+                alt="Reading Icon"
+                class="h-24 lg:h-[170px] mt-2"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2 flex flex-col gap-4">
+          <div class="bg-blue-200 p-4 rounded-lg h-32">
+            <div class="flex justify-between items-center">
+              <h2 class="text-sm lg:text-xl font-semibold text-white">
+                កម្រងសំណួរ ចម្លើយត្រៀមបាក់ឌុប
+              </h2>
+              <img
+                src="https://img.pikbest.com/png-images/20191012/cartoon-flat-boy-reading-book-png-element_2525052.png!sw800"
+                alt="STEM Icon"
+                class="h-16 lg:h-[100px]"
+              />
+            </div>
+          </div>
+          <div class="bg-customBlue p-4 rounded-lg h-32 text-white flex items-center text-base lg:text-xl">
+            អក្សរសិល្ប៍ខ្មែរ តែងសេចក្តី
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center">
+        <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-customBlue100  mx-2">
+          <FaGraduationCap className="text-xl" />
+        </div>
+        <SectionHeader title="លំហាត់អនុវត្តន៍" linkText="" />
+      </div>
+      <div className="overflow-x-auto scrollbar-hide px-4">
+        <div className="flex gap-4 md:gap-6 py-2 min-w-fit justify-center">
+          {bookCategories.map((item, index) => (
+            <HoverCard
+              key={index}
+              title={item.title}
+              image={item.image}
+              initialColor={colors[index % colors.length]}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="flex justify-center items-center mt-3 md-3 text-xl font-bold">10 000 0 Books in 15 Cagegory</div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 px-4 mt-3 justify-center items-center" >
+        <div className="flex flex-col">
+          <div className="flex flex-col items-center gap-4 bg-slate-400">
+            <img src="" alt="no" className="h-10 w-10 md:w-16 md:h-16 object-contain mb-4" />
+          </div>
+
+          <p>Love Story</p>
+        </div>
+        <div className="flex flex-col">
+          <div className="flex flex-col items-center gap-4 bg-slate-600">
+            <img src="" alt="no" className="h-10 w-10 md:w-16 md:h-16 object-contain mb-4" />
+          </div>
+
+          <p>Love Story</p>
         </div>
       </div>
     </Layout>

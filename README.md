@@ -7,6 +7,7 @@
 # npm install vite laravel-vite-plugin @vitejs/plugin-react react react-dom
 # php artisan db:seed --class=AdminTableSeeder
 # composer require tightenco/ziggy
+# npm install tailwind-scrollbar-hide
 
 
 
