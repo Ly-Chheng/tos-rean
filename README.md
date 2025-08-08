@@ -9,6 +9,8 @@
 # composer require tightenco/ziggy
 # npm install tailwind-scrollbar-hide
 # npm install swiper
+# npm install pdfjs-dist
+# npm install react-pdf
 
 
 
