@@ -2,6 +2,7 @@ import Layout from "./Layout";
 import SectionHeader from "@/Components/SectionHeader";
 import { FaGraduationCap, FaSearch, FaFilter } from "react-icons/fa";
 import HoverCard from "@/Components/HoverCard";
+import BookCard from "@/Components/BookCard";
 
 const bookCategories = [
   { title: "គណិតវិទ្យា", image: "https://cdn-icons-png.freepik.com/512/4720/4720458.png" },
@@ -89,14 +90,8 @@ function Books() {
       <SectionHeader title="STEM ប្រចាំថ្ងៃ" linkText="មើលទាំងអស់" href="#" />
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 px-4">
         {stemBooks.map((book, index) => (
-          <div key={index} className="flex flex-col items-center gap-4">
-            <img
-              src={book.image}
-              alt={`${book.title} book cover`}
-              className="hover:opacity-90 shadow-md rounded-lg min:w-[120px] min:h-[180px] w-[160px] h-[220px] lg:w-[200px] lg:h-[300px] object-cover hover:scale-105 duration-300"
-            />
-            <p className="text-center text-gray-700 text-sm sm:text-base">{book.genre}</p>
-          </div>
+          
+          <BookCard key={index} book={book} index={index} />
         ))}
       </div>
       <div class="flex flex-col md:flex-row mx-auto p-4 gap-4 mt-3">
