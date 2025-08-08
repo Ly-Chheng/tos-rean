@@ -63,7 +63,7 @@ function Books() {
               <img
                 src={item.image}
                 alt={`${item.title} book category icon`}
-                className="h-10 w-10 md:w-16 md:h-16 object-contain mb-4"
+                className="h-10 w-10 md:w-16 md:h-16 object-contain mb-4 "
               />
               <p className="text-center text-gray-800 font-medium text-sm md:text-base">
                 {item.title}
@@ -93,7 +93,7 @@ function Books() {
             <img
               src={book.image}
               alt={`${book.title} book cover`}
-              className="shadow-md rounded-lg min:w-[120px] min:h-[180px] w-[160px] h-[220px] lg:w-[200px] lg:h-[300px] object-cover hover:scale-105 duration-300"
+              className="hover:opacity-90 shadow-md rounded-lg min:w-[120px] min:h-[180px] w-[160px] h-[220px] lg:w-[200px] lg:h-[300px] object-cover hover:scale-105 duration-300"
             />
             <p className="text-center text-gray-700 text-sm sm:text-base">{book.genre}</p>
           </div>

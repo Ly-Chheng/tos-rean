@@ -12,6 +12,8 @@ Route::redirect('/', '/homepage');
 Route::get('homepage', [App\Http\Controllers\Web\HomepageController::class, 'index'])->name('homepage');
 Route::get('classes', [App\Http\Controllers\Web\ClassController::class, 'index'])->name('classes');
 Route::get('books', [App\Http\Controllers\Web\BookController::class, 'index'])->name('books');
+Route::get('video_view', [App\Http\Controllers\Web\VideoViewController::class, 'index'])->name('video_view');
+Route::get('read_more', [App\Http\Controllers\Web\ReadMoreController::class, 'index'])->name('read_more');
 
 Route::middleware(['auth', 'verified', HandleInertiaRequests::class])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
