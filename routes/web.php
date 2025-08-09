@@ -27,4 +27,5 @@ Route::middleware(['auth', 'verified', HandleInertiaRequests::class])->group(fun
     Route::post('/lock-screen', [App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'lock'])->name('lock-screen.lock');
 });
 
+// Route::any('{any}', fn() => Inertia::render('WebPages/NotFoundPage'))->where('any', '.*')->name('notfound');
 require __DIR__ . '/auth.php';

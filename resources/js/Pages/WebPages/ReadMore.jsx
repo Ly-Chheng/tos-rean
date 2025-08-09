@@ -13,7 +13,7 @@ const ReadMore = () => {
   const [error, setError] = useState(null);
   const [containerWidth, setContainerWidth] = useState(400);
   const [containerHeight, setContainerHeight] = useState(window.innerHeight);
-  const [pageDimensions, setPageDimensions] = useState(null); // Store PDF page dimensions
+  const [pageDimensions, setPageDimensions] = useState(null);
   const [views] = useState(68);
   const [downloads] = useState(23);
   const pdfFile = "/assets/book_store.pdf";
@@ -44,8 +44,8 @@ const ReadMore = () => {
   const onPageLoadSuccess = (page) => {
     // Store the page dimensions when the page loads
     setPageDimensions({
-      width: page._pageInfo.view[2], // PDF page width
-      height: page._pageInfo.view[3], // PDF page height
+      width: page._pageInfo.view[2],
+      height: page._pageInfo.view[3],
     });
   };
 
@@ -62,14 +62,12 @@ const ReadMore = () => {
     : (pageNumber / 13) * 100;
 
   const getDynamicScale = () => {
-    if (!pageDimensions) return 1.0; // Default scale if dimensions aren't available yet
+    if (!pageDimensions) return 1.0; 
 
     const { width: pageWidth, height: pageHeight } = pageDimensions;
     const widthScale = containerWidth / pageWidth;
     const heightScale = containerHeight / pageHeight;
-
-    // Use the smaller scale to ensure the entire page fits
-    return Math.min(widthScale, heightScale) * 0.95; // 0.95 for a small margin
+    return Math.min(widthScale, heightScale) * 0.95;
   };
 
   const book = {
@@ -79,6 +77,7 @@ const ReadMore = () => {
     year: "2025",
     des: "ការនិយាយការពណ៌នាពីមិត្តល្អ បង្រៀនដោយ អ្នកគ្រូ ឌី សោភ័ណ សាលាបឋមសិក្សាគំរូក្រុង ខេត្តកំពង់ឆ្នាំង #ភាសាខ្មែរ #ថ្នាក់ទី៤ លក្ខខណ្ឌ ប្រើប្រាស់៖ អ្នកត្រូវបានអនុញ្ញាតឱ្យថតចម្លងនិងចែកចាយឯកសារនេះដោយគ្មានការកំណត់ណាមួយ។",
   };
+  
   const stemBooks = [
     { title: "The Hunger Games", genre: "Dystopian Fiction", image: "https://m.media-amazon.com/images/I/817BQY9AkfL._SY522_.jpg" },
     { title: "Catching Fire", genre: "ប្រាជ្ញាជីវិត", image: "https://mindbooks.com.kh/storage/nbQvZrNki9gL2pNR5rX1OBmmbRS5FEtbH65Q9ttf.jpeg" },
@@ -135,12 +134,12 @@ const ReadMore = () => {
                   className="flex flex-col items-center w-full overflow-auto"
                   style={{ height: `${containerHeight}px`, position: "relative" }}
                 >
-                  <div className="flex items-center w-full justify-between px-4"> {/* Container for buttons and PDF */}
+                  <div className="flex items-center w-full justify-between px-4">
                     <button
                       onClick={handlePreviousPage}
                       disabled={pageNumber <= 1}
                       className="text-gray-600 hover:text-gray-800 disabled:text-gray-300 disabled:cursor-not-allowed p-2 bg-gray-100 rounded-full"
-                      onMouseDown={(e) => e.preventDefault()} // Prevent default behavior if needed
+                      onMouseDown={(e) => e.preventDefault()}
                     >
                       ◀
                     </button>
@@ -154,7 +153,7 @@ const ReadMore = () => {
                       loading={<p>Loading PDF...</p>}
                     >
                       <Page
-                        key={pageNumber} // Force re-render on page change
+                        key={pageNumber}
                         pageNumber={pageNumber}
                         scale={getDynamicScale()}
                         onLoadSuccess={onPageLoadSuccess}
@@ -167,7 +166,7 @@ const ReadMore = () => {
                       onClick={handleNextPage}
                       disabled={pageNumber >= (numPages || 13)}
                       className="text-gray-600 hover:text-gray-800 disabled:text-gray-300 disabled:cursor-not-allowed p-2 bg-gray-100 rounded-full"
-                      onMouseDown={(e) => e.preventDefault()} // Prevent default behavior if needed
+                      onMouseDown={(e) => e.preventDefault()}
                     >
                       ▶
                     </button>
