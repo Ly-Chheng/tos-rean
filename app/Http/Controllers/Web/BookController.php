@@ -14,7 +14,7 @@ class BookController extends Controller
     {
         return inertia('WebPages/Books', [
             "categories"=> Category::all(),
-            "stembooks"=>StemBook::all(),
+            "stemBooks"=>StemBook::all(),
             "bookCategories"=>BookCategory::all(),
         ]);
     }
