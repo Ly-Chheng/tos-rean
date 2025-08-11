@@ -14,14 +14,14 @@ function Slider({ banners }) {
       navigation // Enabled navigation arrows
       pagination={{ clickable: true }}
       autoplay={{ delay: 6000, disableOnInteraction: true }}
-      className="w-full h-[110px] sm:h-[150px] md:h-[250px] rounded-lg mb-6"
+      className="w-full h-[150px] sm:h-[170px] md:h-[300px] lg:h[350px] px-2 py-2"
     >
       {banners.map((banner) => (
         <SwiperSlide key={banner.id}>
           <img
             src={banner.image}
             alt={`Banner ${banner.id}`}
-            className="w-full h-full object-cover rounded-lg"
+            className="w-full h-full object-cover"
           />
         </SwiperSlide>
       ))}

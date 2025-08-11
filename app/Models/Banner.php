@@ -18,7 +18,7 @@ class Banner extends Model
         ],
         [
             'id' => 3,
-            'image' => 'https://marketplace.canva.com/EAFaQMY2mBo/1/0/1600w/canva-yellow-and-blue-illustrated-back-to-school-classroom-banner-BpJ8YG6Kz3M.jpg',
+            'image' => 'https://d3jmn01ri1fzgl.cloudfront.net/photoadking/webp_thumbnail/white-and-grape-kid-creative-school-banner-template-0ygyd5151bb7c8.webp',
         ],
     ];
     
