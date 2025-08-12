@@ -88,20 +88,3 @@ and more. Whether you're preparing for exams, exploring future careers, or just 
             └── 📃 constants.jsx
             └── 📃 ziggy.js
 ```
-
-## Socket IO
-
-```python
-    export const EVENTS = {
-        TICKET_CREATED: 'ticketCreated',
-        TICKET_ACCEPTED: 'ticketAccepted',
-        TICKET_SOLVED: 'ticketSolved',
-        TICKET_PINNED: 'ticketPinned',
-        TICKET_UNPINNED: 'ticketUnpinned',
-        TICKET_REPAIR: 'ticketRepair',
-    }
-```
-
-
-Front end
-Back end

@@ -16,7 +16,22 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                customBlue: '#0A96A4',
+                customBlue100: '#077a85ff',
+                gray400:'#888888ff',
+                gray500:'#646464ff'
+            },
         },
+         keyframes: {
+        flip: {
+          '0%': { transform: 'rotateY(90deg)', opacity: 0 },
+          '100%': { transform: 'rotateY(0deg)', opacity: 1 },
+        },
+      },
+      animation: {
+        flip: 'flip 0.6s ease-in-out',
+      },
     },
 
     plugins: [
