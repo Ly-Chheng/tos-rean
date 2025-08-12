@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Logo from "../assets/logo/react.png";
 import Dropdown from "@/components/Dropdown";
 import NavLink from "@/components/NavLink";
 import { Link } from "@inertiajs/react";
+import Logo from "../assets/logo/react.png";
 
 export default function AuthenticatedLayout({ user, header, children }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);

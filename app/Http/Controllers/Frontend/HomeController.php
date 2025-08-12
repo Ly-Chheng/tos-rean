@@ -9,6 +9,11 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {        
-        return inertia('Frontend/Home');
+        return inertia('Frontend/Homes/index');
+    }
+
+    public function video()
+    {        
+        return inertia('Frontend/Homes/video');
     }
 }

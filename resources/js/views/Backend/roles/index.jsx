@@ -41,8 +41,8 @@ function Index({ auth, roles, success }) {
       header={
         <div className="flex items-center dark:text-gray-200">
           <Link href={route("roles.index")}>
-            <h6 className="text-sm text-blue-600 dark:text-gray-200 leading-tight px-1">
-              Roles
+            <h6 className="text-sm text-gray-800 dark:text-gray-200 leading-tight px-1">
+              តួនាទី
             </h6>
           </Link>
         </div>

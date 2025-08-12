@@ -65,8 +65,8 @@ function Index({ auth, users, success }) {
           <div className="flex items-center dark:text-gray-200">
             <Link href={route("users.index")}>
               <div className="flex items-center">
-                <h6 className="text-sm text-blue-600 dark:text-gray-200 leading-tight px-1">
-                  Users
+                <h6 className="text-sm text-gray-800 dark:text-gray-200 leading-tight px-1">
+                  អ្នកប្រើប្រាស់
                 </h6>
               </div>
             </Link>

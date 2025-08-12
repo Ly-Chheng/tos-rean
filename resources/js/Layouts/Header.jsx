@@ -72,7 +72,7 @@ export default function Header({
 
   return (
     <>
-      <header className="shadow-lg top-0 z-50 py-4 bg-[#3465f4] flex items-center justify-between px-6 text-white h-16">
+      <header className="shadow-lg top-0 z-50 py-4 bg-[#1D1E35] flex items-center justify-between px-6 text-white h-16">
         <button
           className="text-white hover:text-gray-200 transition-colors duration-200 focus:outline-none"
           onClick={() => setSidebarOpen(!sidebarOpen)}

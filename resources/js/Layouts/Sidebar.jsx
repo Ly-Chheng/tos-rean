@@ -271,7 +271,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
         } md:relative md:translate-x-0 transition-transform duration-500 ease-in-out`}
       >
         <div className="flex flex-col h-screen">
-          <div className="flex items-center justify-between px-4 py-4 bg-[#3465f4]">
+          <div className="flex items-center justify-between px-4 py-4 bg-[#1D1E35]">
              <Link href="/" className="flex items-center">
               <img src={Logo} alt="Logo" className="h-8 w-auto fill-current text-white"/>
               <span className="ml-2 text-white font-semibold text-lg">តោះរៀន!</span>

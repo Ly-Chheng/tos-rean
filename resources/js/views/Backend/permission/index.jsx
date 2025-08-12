@@ -97,7 +97,7 @@ function Permission({ auth, permissions, success = [] }) {
         <div className="flex items-center">
           <Link href={route("permission.index")}>
             <h6 className="text-sm text-gray-800 dark:text-gray-200 leading-tight px-1">
-              Permission
+              ការអនុញ្ញាត
             </h6>
           </Link>
         </div>

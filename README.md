@@ -82,6 +82,7 @@ and more. Whether you're preparing for exams, exploring future careers, or just 
                     └── 🎯 Backend
                     └── 🖼 Frontend
             └── 📁 utils
+                    └── errorResponse.jsx
             └── 📃 app.jsx
             └── 📃 bootstrap.js
             └── 📃 constants.jsx
