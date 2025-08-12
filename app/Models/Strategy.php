@@ -31,13 +31,7 @@ class Strategy extends Model
             'title' => 'មេរៀនគន្លឹះជាប់លើកទី១',
             'image' => 'https://myfirstnestegg.com/wp-content/uploads/student-proudly-holds-good-grade.png',
             'detail' => 'រយៈពេល៖ ១០០ នាទី',
-        ],
-        [
-            'id' => 6,
-            'title' => 'ការប្រឡង ថ្នាក់ទី១២ ឆ្នាំ២០២៣',
-            'image' => 'https://www.sparkadmissions.com/wp-content/uploads/2020/04/How_to_Get_Good_Grades_in_High_School.jpg',
-            'detail' => 'រយៈពេល៖ ២០០ នាទី',
-        ],
+        ]
         
     ];
 
