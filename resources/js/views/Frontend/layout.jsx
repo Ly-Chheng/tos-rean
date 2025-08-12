@@ -49,15 +49,19 @@ function Navbar({ children }) {
                                 const Icon = item.icon;
                                 const isActive = activeRoute === item.route;
                                 return (
-                                    <Link key={index} href={route(item.route)}
-                                        className={`group flex items-center gap-2 ${isActive ? 'text-blue-600 ' : 'text-gray-600'} hover:text-blue-600  px-4 py-2 rounded transition duration-200`}
+                                    <Link
+                                        key={index}
+                                        href={route(item.route)}
+                                        className={`group flex items-center gap-2 ${isActive ? 'text-blue-600' : 'text-gray-600'} hover:text-blue-600 px-4 py-2 rounded transition duration-200`}
                                     >
-                                        <div className={`w-10 h-10 ${isActive ? 'bg-blue-100' : 'bg-gray-100'} rounded-full flex items-center justify-center ${isActive ? 'text-blue-600' : 'text-gray-600'}`}>
-                                            {Icon && <Icon className="text-xl" />}
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <span className="font-medium">{item.name}</span>
-                                            <div className={`h-1 w-full bg-blue-600 rounded origin-left scale-x-0 ${isActive ? 'scale-x-100 mt-1' : 'group-hover:scale-x-100 mt-1'} transition-transform duration-300`}></div>
+                                        <div className='flex flex-col'>
+                                            <div className="flex gap-2">
+                                                <div className={`rounded-full flex items-center justify-center ${isActive ? 'text-blue-600' : 'text-gray-600'}`}>
+                                                    {Icon && <Icon className="text-lg group-hover:text-blue-600 dark:group-hover:text-blue-600" />}
+                                                </div>
+                                                <span className="font-medium">{item.name}</span>
+                                            </div>
+                                            <div className={`h-0.5 mt-1 w-full bg-blue-600 rounded origin-left scale-x-0 ${isActive ? 'scale-x-100' : 'group-hover:scale-x-100'} transition-transform duration-300`}></div>
                                         </div>
                                     </Link>
                                 );
@@ -69,19 +73,21 @@ function Navbar({ children }) {
             </header>
 
             {/* Bottom Navigation for Mobile */}
-            <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-md z-50 border-t">
+            <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-md z-50 border-t dark:border-gray-700">
                 <div className="flex justify-around items-center py-2">
                     {menuItems.map((item, index) => {
                         if (item.permission === null) {
                             const Icon = item.icon;
+                            const isActive = activeRoute === item.route;
                             return (
                                 <Link
                                     key={index}
                                     href={route(item.route)}
-                                    className="flex flex-col items-center text-xs text-gray-700 hover:text-blue-600"
+                                    className={`flex flex-col items-center text-xs ${isActive ? 'text-blue-600' : 'text-gray-700'} dark:${isActive ? 'text-blue-00' : 'text-gray-600'} hover:text-blue-600 dark:hover:text-blue-400 group`}
                                 >
                                     <Icon className="text-xl mb-1" />
                                     {item.name}
+                                    <div className={`h-0.5 mt-1 w-0 bg-blue-600 rounded ${isActive ? 'w-full' : 'group-hover:w-full'} transition-all duration-300`}></div>
                                 </Link>
                             );
                         }
@@ -92,7 +98,7 @@ function Navbar({ children }) {
 
             {/* Padding space for content */}
             <div className="sm:pt-5 md:pt-20 pb-16 md:pb-0 sm:pl-3" />
-            <main className="container mx-auto px-1 py-8">
+            <main>
                 {children}
             </main>
         </>
