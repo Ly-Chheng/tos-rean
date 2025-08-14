@@ -161,7 +161,7 @@ function Home({ banners, supports, students, strategies, videos, books }) {
           </div>
         </div>
       </section>
-      <section className="mt-10">
+      <section>
         <div className="container mx-auto pb-10">
           <div className="flex justify-center items-center mt-[30px] md:mt-[80px] lg:mt-[80px] mb-[50px] px-10">
             <div className="items-center justify-center text-center">
@@ -173,17 +173,17 @@ function Home({ banners, supports, students, strategies, videos, books }) {
               </h2>
             </div>
           </div>
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 pb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pb-10">
             {books.map((book) => (
               <div
                 key={book.id}
-                className="m-2 bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-110"
+                className="m-2 border border-1 border-gray-200 bg-white rounded-lg shadow overflow-hidden transform transition-transform duration-300 hover:scale-110"
               >
                 <a href="#">
                   <img
                     src={book.image}
                     alt={book.title}
-                    className="w-full h-[250px] object-contain bg-gray-50 transform transition-transform duration-300 hover:scale-110 hover:opacity-90"
+                    className="w-full h-[250px] object-contain transform transition-transform duration-300 hover:scale-110 hover:opacity-90"
                   />
                 </a>
                 <div className="p-3">
