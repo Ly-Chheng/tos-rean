@@ -1,6 +1,6 @@
 import Layout from "../layout";
 import React, { useState, useRef, useEffect } from 'react';
-import { FaGraduationCap, FaYoutube, FaArrowCircleRight, FaPlayCircle } from "react-icons/fa";
+import { FaGraduationCap, FaYoutube, FaArrowCircleRight, FaPlayCircle, FaEye } from "react-icons/fa";
 import Podcast from "../../../assets/images/podcast.png";
 import vector_bg from '../../../assets/images/vector_bg.png';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,85 +8,22 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import useAutoScroll from "../../../hook/useAutoScroll";
 
-function Home({ banners, supports, students, strategies, videos }) {
+function Home({ banners, supports, students, strategies, videos, books }) {
   const [activeVideoIndex, setActiveVideoIndex] = useState(null);
   const studentsRef = useRef(null);
   const supportsRef = useRef(null);
   const [isPaused, setIsPaused] = useState({ students: false, supports: false });
 
-  const handleVideoClick = (index, videoId) => {
-    setActiveVideoIndex(index);
-    window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
-  };
-
-  // Centralized scroll animation logic
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    const sections = [
+  // Call the reusable animation
+  useAutoScroll(
+    [
       { ref: studentsRef, data: students, speed: 1, key: 'students' },
-      { ref: supportsRef, data: supports, speed: 0.8, key: 'supports' },
-    ];
-
-    const animationFrameIds = {};
-
-    // Initialize animation for each section
-    for (const { ref, data, speed, key } of sections) {
-      if (!data || data.length === 0) {
-        continue;
-      }
-      const container = ref.current;
-      if (!container) {
-        continue;
-      }
-      let lastTime = performance.now();
-      const scrollStep = (now) => {
-        const delta = (now - lastTime) / 16.67;
-        lastTime = now;
-        if (isPaused[key]) {
-          animationFrameIds[key] = requestAnimationFrame(scrollStep);
-          return;
-        }
-        const maxScroll = container.scrollWidth - container.clientWidth;
-        if (maxScroll <= 0) {
-          container.scrollLeft = 0;
-          return;
-        }
-        container.scrollLeft += speed * delta;
-        // Buffer to handle precision issues
-        if (container.scrollLeft >= maxScroll - 1) {
-          container.scrollLeft = 0;
-        }
-        animationFrameIds[key] = requestAnimationFrame(scrollStep);
-      };
-      animationFrameIds[key] = requestAnimationFrame(scrollStep);
-    }
-    return () => {
-      // Cleanup all animation frames
-      for (const key in animationFrameIds) {
-        cancelAnimationFrame(animationFrameIds[key]);
-      }
-    };
-  }, [isPaused, students, supports]);
-
-  // Handle dynamic content updates and resize
-  useEffect(() => {
-    const handleResize = () => {
-      if (studentsRef.current) {
-        studentsRef.current.scrollLeft = 0;
-      }
-      if (supportsRef.current) {
-        supportsRef.current.scrollLeft = 0;
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [students, supports]);
+      { ref: supportsRef, data: supports, speed: 0.8, key: 'supports' }
+    ],
+    isPaused
+  );
 
   return (
     <Layout>
@@ -105,7 +42,7 @@ function Home({ banners, supports, students, strategies, videos }) {
             {strategies.map((item, index) => (
               <div
                 key={item.id}
-                className="bg-white rounded-lg shadow-sm w-[250px] shrink-0 lg:w-auto animate-fadeInUpNoOpacity transform transition-transform duration-300 hover:scale-105"
+                className="bg-white rounded-lg shadow-sm w-[250px] shrink-0 lg:w-auto animate-fadeInUpNoOpacity transform transition-transform duration-300 hover:scale-110"
                 style={{ '--index': index }}
               >
                 <img
@@ -147,7 +84,7 @@ function Home({ banners, supports, students, strategies, videos }) {
           style={{ backgroundImage: `url(${vector_bg})` }}
         >
           <div
-            className="flex overflow-x-auto scrollbar-hide scroll-auto mt-[80px]"
+            className="flex overflow-x-auto scrollbar-hide scroll-auto mt-[80px] iteams-center justify-center"
             ref={studentsRef}
             onMouseEnter={() => setIsPaused((prev) => ({ ...prev, students: true }))}
             onMouseLeave={() => setIsPaused((prev) => ({ ...prev, students: false }))}
@@ -203,6 +140,58 @@ function Home({ banners, supports, students, strategies, videos }) {
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="pt-[10px] mt-10">
+        <div className="container mx-auto pb-10">
+          <div className="flex justify-center items-center mt-[30px] md:mt-[80px] lg:mt-[80px] mb-[50px] px-10">
+            <div className="items-center justify-center text-center">
+              <h2 className="text-4xl font-semibold mb-0 textblue">
+                បណ្តុំសៀវភៅ
+              </h2>
+              <h2 className="text-lg mb-0 mt-3 text-gray-500">
+                សៀវភៅទាំងនេះចង់បង្ហាញអ្នកទាំងអស់គ្នានៅចំណុចដែលសំខា ន់ៗនៃការអភិវឌ្ឍខ្លួន
+              </h2>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 pb-10">
+            {books.map((book) => (
+              <div
+                key={book.id}
+                className="m-2 bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-110"
+              >
+                <a href="#">
+                  <img
+                    src={book.image}
+                    alt={book.title}
+                    className="w-full h-[250px] object-contain bg-gray-50 transform transition-transform duration-300 hover:scale-110 hover:opacity-90"
+                  />
+                </a>
+                <div className="p-3">
+                  <h2 className="text-gray-700 text-xl font-semibold truncate">
+                    {book.title}
+                  </h2>
+                  <p className="mt-1 line-clamp-2 text-gray-500 text-sm">{book.description}</p>
+                  <hr className="border-t-3 border-dashed border-gray-300 mt-2" />
+                  <div className="flex justify-between items-center mt-2">
+                    <div className="bg-transparent border border-gray-200 inline-flex items-center gap-2 px-3 py-1 rounded-full">
+                      <FaEye className="text-orange-500" />
+                      <span className="text-orange-500 font-medium">{book.views}</span>
+                    </div>
+                    <p className="text-gray-500 text-sm">{book.date} - ថ្ងៃនេះ</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center justify-center mt-10 pb-10">
+            <a href="#">
+              <button className="flex items-center gap-2 bg-orange-600 text-white p-3 px-5 rounded-lg hover:bg-orange-700 hover:shadow-sm">
+                ច្រើនទៀត
+                <FaArrowCircleRight />
+              </button>
+            </a>
           </div>
         </div>
       </section>
