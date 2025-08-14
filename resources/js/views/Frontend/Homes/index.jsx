@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FaGraduationCap, FaYoutube, FaArrowCircleRight } from "react-icons/fa";
 import Podcast from "../../../assets/images/podcast.png";
 import vector_bg from '../../../assets/images/vector_bg.png';
-import Slider from "@/Components/Slider";
+
 
 function Home({ banners, supports, students, strategies, videos }) {
   const [activeVideoIndex, setActiveVideoIndex] = useState(null);
@@ -15,7 +15,7 @@ function Home({ banners, supports, students, strategies, videos }) {
 
   return (
     <Layout>
-      <Slider banners={banners} />
+      {/* <Slider banners={banners} /> */}
       <section className="bg-blue-50">
         <div className="flex justify-center items-center mt-[30px] md:mt-[80px] lg:mt-[80px] mb-3 px-10 py-10">
           <div className="items-center justify-center text-center">

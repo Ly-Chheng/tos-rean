@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Support;
 use App\Models\Student;
-use App\Models\Strategy;
-use App\Models\Video;
-use App\Models\Banner;
+// use App\Models\Strategy;
+// use App\Models\Video;
+// use App\Models\Banner;
 
 class HomeController extends Controller
 {
@@ -17,9 +17,9 @@ class HomeController extends Controller
         return inertia('Frontend/Homes/index',[
             'supports' => Support::all(),
             'students' => Student::all(),
-            'strategies' => Strategy::all(),
-            'videos' => Video::all(),
-            'banners'=>Banner::all(),
+            // 'strategies' => Strategy::all(),
+            // 'videos' => Video::all(),
+            // 'banners'=>Banner::all(),
         ]);
     }
 
