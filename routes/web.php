@@ -15,7 +15,7 @@ Route::get('class', [App\Http\Controllers\Frontend\ClassesController::class, 'in
 Route::get('setting', [App\Http\Controllers\Frontend\SettingsController::class, 'index'])->name('setting');
 
 
-Route::get('read_more', [App\Http\Controllers\Web\HomeController::class, 'index'])->name('read_more');
+Route::get('read_more', [App\Http\Controllers\Frontend\BooksController::class, 'readmore'])->name('read_more');
 
 Route::middleware(['auth', 'verified', HandleInertiaRequests::class])->group(function () {
 

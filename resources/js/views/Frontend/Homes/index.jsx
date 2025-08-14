@@ -1,6 +1,6 @@
 import Layout from "../layout";
 import React, { useState, useRef, useEffect } from 'react';
-import { FaGraduationCap, FaYoutube, FaArrowCircleRight, FaPlayCircle } from "react-icons/fa";
+import { FaGraduationCap, FaYoutube, FaArrowCircleRight, FaPlayCircle, FaEye } from "react-icons/fa";
 import Podcast from "../../../assets/images/podcast.png";
 import vector_bg from '../../../assets/images/vector_bg.png';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -158,6 +158,137 @@ function Home({ banners, supports, students, strategies, videos }) {
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="pt-[10px] mt-10">
+        <div className="container mx-auto pb-10">
+          <div className="flex justify-center items-center mt-[30px] md:mt-[80px] lg:mt-[80px] mb-[50px] px-10">
+            <div className="items-center justify-center text-center">
+              <h2 className="text-4xl font-semibold mb-0 textblue">
+                បណ្តុំសៀវភៅ
+              </h2>
+              <h2 className="text-lg mb-0 mt-3 text-gray-500">
+                សៀវភៅទាំងនេះចង់បង្ហាញអ្នកទាំងអស់គ្នានៅចំណុចដែលសំខា ន់ៗនៃការអភិវឌ្ឍខ្លួន
+              </h2>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="m-2 transform transition-transform duration-300 hover:scale-105 bg-white rounded-lg shadow-lg overflow-hidden">
+              {/* Image */}
+              <img
+                src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1677798640i/6536021.jpg"
+                alt="Book"
+                className="w-full h-[250px] object-contain bg-blue-50"
+              />
+
+              {/* Text content */}
+              <div className="p-3">
+                <h2 className=" text-xl font-semibold">
+                  កម្រងវិញ្ញាសាសម្រាប់ប្រលង ២០២៥
+                </h2>
+                <h2 className=" text-sm mt-2 pb-2">
+                  សៀវភៅទាំងនេះចង់បង្ហាញអ្នកទាំងអស់គ្នានៅចំណុចដែលសំខាន់ៗនៃការអភិវឌ្ឍខ្លួនខាងលើនេះ
+                </h2>
+                <hr className="border-t-3 border-dashed border-gray-300 mt-2" />
+
+                {/* Eye + date */}
+                <div className="flex justify-between items-center mt-2">
+                  <div className="bg-white inline-flex items-center gap-2 px-3 py-1 rounded-full shadow">
+                    <FaEye className="text-gray-700" />
+                    <span className="text-gray-700 font-medium">99</span>
+                  </div>
+                  <p className="">08/07/2025 - 3 ថ្ងៃ</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="m-2 transform transition-transform duration-300 hover:scale-105 bg-white rounded-lg shadow-lg overflow-hidden">
+              {/* Image */}
+              <img
+                src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1677798640i/6536021.jpg"
+                alt="Book"
+                className="w-full h-[250px] object-contain bg-blue-50"
+              />
+
+              {/* Text content */}
+              <div className="p-3">
+                <h2 className=" text-xl font-semibold">
+                  កម្រងវិញ្ញាសាសម្រាប់ប្រលង ២០២៥
+                </h2>
+                <h2 className=" text-sm mt-2 pb-2">
+                  សៀវភៅទាំងនេះចង់បង្ហាញអ្នកទាំងអស់គ្នានៅចំណុចដែលសំខាន់ៗនៃការអភិវឌ្ឍខ្លួនខាងលើនេះ
+                </h2>
+                <hr className="border-t-3 border-dashed border-gray-300 mt-2" />
+
+                {/* Eye + date */}
+                <div className="flex justify-between items-center mt-2">
+                  <div className="bg-white inline-flex items-center gap-2 px-3 py-1 rounded-full shadow">
+                    <FaEye className="text-gray-700" />
+                    <span className="text-gray-700 font-medium">99</span>
+                  </div>
+                  <p className="">08/07/2025 - 3 ថ្ងៃ</p>
+                </div>
+              </div>
+            </div>
+            <div className="m-2 transform transition-transform duration-300 hover:scale-105 bg-white rounded-lg shadow-lg overflow-hidden">
+              {/* Image */}
+              <img
+                src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1677798640i/6536021.jpg"
+                alt="Book"
+                className="w-full h-[250px] object-contain bg-blue-50"
+              />
+
+              {/* Text content */}
+              <div className="p-3">
+                <h2 className=" text-xl font-semibold">
+                  កម្រងវិញ្ញាសាសម្រាប់ប្រលង ២០២៥
+                </h2>
+                <h2 className=" text-sm mt-2 pb-2">
+                  សៀវភៅទាំងនេះចង់បង្ហាញអ្នកទាំងអស់គ្នានៅចំណុចដែលសំខាន់ៗនៃការអភិវឌ្ឍខ្លួនខាងលើនេះ
+                </h2>
+                <hr className="border-t-3 border-dashed border-gray-300 mt-2" />
+
+                {/* Eye + date */}
+                <div className="flex justify-between items-center mt-2">
+                  <div className="bg-white inline-flex items-center gap-2 px-3 py-1 rounded-full shadow">
+                    <FaEye className="text-gray-700" />
+                    <span className="text-gray-700 font-medium">99</span>
+                  </div>
+                  <p className="">08/07/2025 - 3 ថ្ងៃ</p>
+                </div>
+              </div>
+            </div>
+            <div className="m-2 transform transition-transform duration-300 hover:scale-105 bg-white rounded-lg shadow-lg overflow-hidden">
+              {/* Image */}
+              <a href="">
+                <img
+                  src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1677798640i/6536021.jpg"
+                  alt="Book"
+                  className="w-full h-[250px] object-contain bg-gray-50 transform transition-transform duration-300 hover:scale-105"
+                />
+              </a>
+              {/* Text content */}
+              <div className="p-3">
+                <h2 className=" text-xl font-semibold">
+                  កម្រងវិញ្ញាសាសម្រាប់ប្រលង ២០២៥
+                </h2>
+                <h2 className=" text-sm mt-2 pb-2">
+                  សៀវភៅទាំងនេះចង់បង្ហាញអ្នកទាំងអស់គ្នានៅចំណុចដែលសំខាន់ៗនៃការអភិវឌ្ឍខ្លួនខាងលើនេះ
+                </h2>
+                <hr className="border-t-3 border-dashed border-gray-300 mt-2" />
+
+                {/* Eye + date */}
+                <div className="flex justify-between items-center mt-2">
+                  <div className="bg-white inline-flex items-center gap-2 px-3 py-1 rounded-full shadow">
+                    <FaEye className="text-gray-700" />
+                    <span className="text-gray-700 font-medium">99</span>
+                  </div>
+                  <p className="">08/07/2025 - 3 ថ្ងៃ</p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

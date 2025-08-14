@@ -27,4 +27,8 @@ class HomeController extends Controller
     {        
         return inertia('Frontend/Homes/video');
     }
+    public function read()
+    {        
+        return inertia('Frontend/Homes/video');
+    }
 }
