@@ -98,7 +98,7 @@ function Home({ banners, supports, students, strategies, videos, books }) {
           </div>
         </div>
         <div
-          className="relative w-full bg-cover bg-center py-6"
+          className="relative w-full bg-cover bg-center"
           style={{ backgroundImage: `url(${vector_bg})` }}
         >
           <div
@@ -107,7 +107,7 @@ function Home({ banners, supports, students, strategies, videos, books }) {
             onMouseEnter={() => setIsPaused((prev) => ({ ...prev, students: true }))}
             onMouseLeave={() => setIsPaused((prev) => ({ ...prev, students: false }))}
           >
-            <div className="flex gap-4 lg:gap-8 px-2 min-w-max">
+            <div className="flex gap-4 lg:gap-10 px-2 min-w-max">
               {students.map((student) => (
                 <div key={student.id} className="flex flex-col items-center shrink-0 mb-6">
                   <img
@@ -161,7 +161,7 @@ function Home({ banners, supports, students, strategies, videos, books }) {
           </div>
         </div>
       </section>
-      <section className="pt-[10px] mt-10">
+      <section className="mt-10">
         <div className="container mx-auto pb-10">
           <div className="flex justify-center items-center mt-[30px] md:mt-[80px] lg:mt-[80px] mb-[50px] px-10">
             <div className="items-center justify-center text-center">
@@ -214,7 +214,7 @@ function Home({ banners, supports, students, strategies, videos, books }) {
         </div>
       </section>
       <section>
-        <div className="flex flex-col items-center justify-center text-center mt-8 md:mt-20 lg:mt-20 !mb-6 px-10 py-10">
+        <div className="flex flex-col items-center justify-center text-center mt-8 !mb-6 px-10 ">
           <h2 className="text-4xl font-semibold mb-0 textblue">
             BELTEI IU Talk Show
           </h2>
@@ -264,7 +264,7 @@ function Home({ banners, supports, students, strategies, videos, books }) {
         </div>
       </section>
       <section>
-        <div className="flex flex-col items-center justify-center text-center mt-8 md:mt-20 lg:mt-20 !mb-6 px-10 py-10">
+        <div className="flex flex-col items-center justify-center text-center mt-8 md:mt-10 lg:mt-15 !mb-6 px-10">
           <h2 className="text-4xl font-semibold mb-0 textblue">
             អ្នកផ្តល់វគ្គសិក្សា
           </h2>
