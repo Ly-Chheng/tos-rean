@@ -53,12 +53,12 @@ function Navbar({ children }) {
                                     <Link
                                         key={index}
                                         href={route(item.route)}
-                                        className={`group flex items-center gap-2 ${isActive ? 'textblue' : 'text-gray-600'} hover:textblue px-4 py-2 rounded transition duration-200`}
+                                        className={`group flex items-center gap-2 ${isActive ? 'textblue' : 'text-gray-600'} hover:text-blue-600 px-4 py-2 rounded transition duration-200`}
                                     >
                                         <div className='flex flex-col'>
                                             <div className="flex gap-2">
                                                 <div className={`rounded-full flex items-center justify-center ${isActive ? 'textblue' : 'text-gray-600'}`}>
-                                                    {Icon && <Icon className="text-lg group-hover:textblue dark:group-hover:textblue" />}
+                                                    {Icon && <Icon className="text-lg group-hover:text-blue-500 dark:group-hover:textblue" />}
                                                 </div>
                                                 <span className="font-medium">{item.name}</span>
                                             </div>
@@ -84,7 +84,7 @@ function Navbar({ children }) {
                                 <Link
                                     key={index}
                                     href={route(item.route)}
-                                    className={`flex flex-col items-center text-xs ${isActive ? 'textblue' : 'text-gray-700'} dark:${isActive ? 'text-blue-00' : 'text-gray-600'} hover:textblue dark:hover:text-blue-400 group`}
+                                    className={`flex flex-col items-center text-xs ${isActive ? 'textblue' : 'text-gray-700'} dark:${isActive ? 'text-blue-00' : 'text-gray-600'} hover:textblue dark:hover:text-blue-500 group`}
                                 >
                                     <Icon className="text-xl mb-1" />
                                     {item.name}

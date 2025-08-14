@@ -8,6 +8,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import useAutoScroll from "../../../hook/useAutoScroll";
 
 function Home({ banners, supports, students, strategies, videos }) {
   const [activeVideoIndex, setActiveVideoIndex] = useState(null);
@@ -15,78 +16,14 @@ function Home({ banners, supports, students, strategies, videos }) {
   const supportsRef = useRef(null);
   const [isPaused, setIsPaused] = useState({ students: false, supports: false });
 
-  const handleVideoClick = (index, videoId) => {
-    setActiveVideoIndex(index);
-    window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
-  };
-
-  // Centralized scroll animation logic
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    const sections = [
+  // Call the reusable animation
+  useAutoScroll(
+    [
       { ref: studentsRef, data: students, speed: 1, key: 'students' },
-      { ref: supportsRef, data: supports, speed: 0.8, key: 'supports' },
-    ];
-
-    const animationFrameIds = {};
-
-    // Initialize animation for each section
-    for (const { ref, data, speed, key } of sections) {
-      if (!data || data.length === 0) {
-        continue;
-      }
-      const container = ref.current;
-      if (!container) {
-        continue;
-      }
-      let lastTime = performance.now();
-      const scrollStep = (now) => {
-        const delta = (now - lastTime) / 16.67;
-        lastTime = now;
-        if (isPaused[key]) {
-          animationFrameIds[key] = requestAnimationFrame(scrollStep);
-          return;
-        }
-        const maxScroll = container.scrollWidth - container.clientWidth;
-        if (maxScroll <= 0) {
-          container.scrollLeft = 0;
-          return;
-        }
-        container.scrollLeft += speed * delta;
-        // Buffer to handle precision issues
-        if (container.scrollLeft >= maxScroll - 1) {
-          container.scrollLeft = 0;
-        }
-        animationFrameIds[key] = requestAnimationFrame(scrollStep);
-      };
-      animationFrameIds[key] = requestAnimationFrame(scrollStep);
-    }
-    return () => {
-      // Cleanup all animation frames
-      for (const key in animationFrameIds) {
-        cancelAnimationFrame(animationFrameIds[key]);
-      }
-    };
-  }, [isPaused, students, supports]);
-
-  // Handle dynamic content updates and resize
-  useEffect(() => {
-    const handleResize = () => {
-      if (studentsRef.current) {
-        studentsRef.current.scrollLeft = 0;
-      }
-      if (supportsRef.current) {
-        supportsRef.current.scrollLeft = 0;
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [students, supports]);
+      { ref: supportsRef, data: supports, speed: 0.8, key: 'supports' }
+    ],
+    isPaused
+  );
 
   return (
     <Layout>
