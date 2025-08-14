@@ -34,7 +34,7 @@ function Home({ banners, supports, students, strategies, videos, books }) {
         navigation
         pagination={{ clickable: true }}
         autoplay={{ delay: 6000, disableOnInteraction: true }}
-        className="w-full h-[150px] sm:h-[170px] md:h-[300px] lg:h[350px] px-2 py-2"
+        className="w-full h-[200px] sm:h-[170px] md:h-[300px] lg:h[350px] px-2"
       >
         {banners.map((banner) => (
           <SwiperSlide key={banner.id}>
@@ -55,7 +55,7 @@ function Home({ banners, supports, students, strategies, videos, books }) {
             </h2>
           </div>
         </div>
-        <div className="overflow-x-auto scrollbar-hide container mx-auto p-10">
+        <div className="overflow-x-auto scrollbar-hide container mx-auto p-2 md:px-5 lg:px-10">
           <div className="flex gap-3 md:gap-6 px-5 pt-3 pb-3 min-w-fit md:grid md:grid-cols-2 lg:grid lg:grid-cols-4">
             {strategies.map((item, index) => (
               <div
@@ -134,15 +134,14 @@ function Home({ banners, supports, students, strategies, videos, books }) {
               </h2>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row bgblue rounded-2xl mt-2">
+          <div className="flex flex-col lg:flex-row bgblue rounded-2xl mt-2">
             <img
               src="https://education.ams.com.kh/wp-content/uploads/2024/11/Nov-65.png"
               alt="Podcast"
-              className="object-cover rounded-2xl transition-opacity duration-200 hover:opacity-90 h-[300px]"
-              style={{ borderTopRightRadius: '150px', borderBottomRightRadius: '150px' }}
+              className="object-cover lg:rounded-2xl lg:rounded-tr-[150px] lg:rounded-br-[150px] h-[300px]"
             />
-            <div className="flex justify-center flex-rows">
-              <div className="flex flex-col px-10 justify-center items-start">
+            <div className="flex justify-center flex-rows p-3 md:p-10">
+              <div className="flex flex-col px-3 sm:px-5 justify-center items-start">
                 <p className="text-white text-3xl font-semibold mb-2">ការធ្វើបទបង្ហាញគឺជាដំណើរឆ្ពោះទៅរកការបង្រៀន</p>
                 <p className="text mt-3 mb-0 text-white">
                   នៅក្នុងការកំណត់នៃការអប់រំ ការធ្វើបទបង្ហាញគឺជាដំណើរឆ្ពោះទៅរកការបង្រៀន ឬផ្តល់ការបង្រៀនប្រកបដោយភាពទាក់ទាញ។ សម្រាប់សន្និសីទ សិក្ខាសាលា និងព្រឹត្តិការណ៍សាធារណៈ
@@ -173,7 +172,7 @@ function Home({ banners, supports, students, strategies, videos, books }) {
               </h2>
             </div>
           </div>
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 pb-10">
+          <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 min:px-5 pb-10 p-3">
             {books.map((book) => (
               <div
                 key={book.id}
@@ -183,7 +182,7 @@ function Home({ banners, supports, students, strategies, videos, books }) {
                   <img
                     src={book.image}
                     alt={book.title}
-                    className="w-full h-[250px] object-contain bg-gray-50 transform transition-transform duration-300 hover:scale-110 hover:opacity-90"
+                    className="w-full h-[200px] md:h-[250px] object-contain bg-gray-50 transform transition-transform duration-300 hover:scale-110 hover:opacity-90"
                   />
                 </a>
                 <div className="p-3">
