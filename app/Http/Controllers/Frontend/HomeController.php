@@ -9,6 +9,7 @@ use App\Models\Student;
 use App\Models\Strategy;
 use App\Models\Video;
 use App\Models\Banner;
+use App\Models\Book;
 
 class HomeController extends Controller
 {
@@ -20,6 +21,7 @@ class HomeController extends Controller
             'strategies' => Strategy::all(),
             'videos' => Video::all(),
             'banners'=>Banner::all(),
+            'books'=>Book::all(),
         ]);
     }
 
