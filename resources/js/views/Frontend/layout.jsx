@@ -2,6 +2,7 @@ import { Link, usePage } from '@inertiajs/react';
 import { GiOpenBook, GiBookCover, GiTeacher } from "react-icons/gi";
 import { IoSettingsOutline } from "react-icons/io5";
 import Logo from "../../assets/logo/tos_rean.png";
+import Footer from '@/layouts/Footer';
 
 // Define your menu items
 const menuItems = [
@@ -52,16 +53,16 @@ function Navbar({ children }) {
                                     <Link
                                         key={index}
                                         href={route(item.route)}
-                                        className={`group flex items-center gap-2 ${isActive ? 'text-blue-600' : 'text-gray-600'} hover:text-blue-600 px-4 py-2 rounded transition duration-200`}
+                                        className={`group flex items-center gap-2 ${isActive ? 'textblue' : 'text-gray-600'} hover:textblue px-4 py-2 rounded transition duration-200`}
                                     >
                                         <div className='flex flex-col'>
                                             <div className="flex gap-2">
-                                                <div className={`rounded-full flex items-center justify-center ${isActive ? 'text-blue-600' : 'text-gray-600'}`}>
-                                                    {Icon && <Icon className="text-lg group-hover:text-blue-600 dark:group-hover:text-blue-600" />}
+                                                <div className={`rounded-full flex items-center justify-center ${isActive ? 'textblue' : 'text-gray-600'}`}>
+                                                    {Icon && <Icon className="text-lg group-hover:textblue dark:group-hover:textblue" />}
                                                 </div>
                                                 <span className="font-medium">{item.name}</span>
                                             </div>
-                                            <div className={`h-0.5 mt-1 w-full bg-blue-600 rounded origin-left scale-x-0 ${isActive ? 'scale-x-100' : 'group-hover:scale-x-100'} transition-transform duration-300`}></div>
+                                            <div className={`h-0.5 mt-1 w-full bgblue rounded origin-left scale-x-0 ${isActive ? 'scale-x-100' : 'group-hover:scale-x-100'} transition-transform duration-300`}></div>
                                         </div>
                                     </Link>
                                 );
@@ -83,11 +84,11 @@ function Navbar({ children }) {
                                 <Link
                                     key={index}
                                     href={route(item.route)}
-                                    className={`flex flex-col items-center text-xs ${isActive ? 'text-blue-600' : 'text-gray-700'} dark:${isActive ? 'text-blue-00' : 'text-gray-600'} hover:text-blue-600 dark:hover:text-blue-400 group`}
+                                    className={`flex flex-col items-center text-xs ${isActive ? 'textblue' : 'text-gray-700'} dark:${isActive ? 'text-blue-00' : 'text-gray-600'} hover:textblue dark:hover:text-blue-400 group`}
                                 >
                                     <Icon className="text-xl mb-1" />
                                     {item.name}
-                                    <div className={`h-0.5 mt-1 w-0 bg-blue-600 rounded ${isActive ? 'w-full' : 'group-hover:w-full'} transition-all duration-300`}></div>
+                                    <div className={`h-0.5 mt-1 w-0 bgblue rounded ${isActive ? 'w-full' : 'group-hover:w-full'} transition-all duration-300`}></div>
                                 </Link>
                             );
                         }
@@ -95,12 +96,15 @@ function Navbar({ children }) {
                     })}
                 </div>
             </nav>
+            
 
             {/* Padding space for content */}
             <div className="sm:pt-5 md:pt-20 pb-16 md:pb-0 sm:pl-3" />
             <main>
                 {children}
             </main>
+
+            <Footer/>
         </>
     );
 }

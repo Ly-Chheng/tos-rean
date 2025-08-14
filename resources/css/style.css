@@ -13,3 +13,18 @@
     /* --customBlue: #0A96A4; */
 }
 
+.bgOragne{
+    background-color: #FF6E09;
+}
+
+.bgblue{
+    background-color: #0060B4;
+}
+
+.textblue {
+  @apply text-[#0060B4];
+}
+
+.textorainge{
+    background-color: #FF6E09;
+}
