@@ -29,3 +29,11 @@
     background-color: #FF6E09;
 }
 
+.hover-scale5 {
+    @apply transform transition-transform duration-300 hover:scale-105;
+}
+
+.hover-scale10 {
+    @apply transform transition-transform duration-300 hover:scale-110;
+}
+

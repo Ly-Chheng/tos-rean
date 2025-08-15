@@ -10,6 +10,7 @@ use App\Models\Strategy;
 use App\Models\Video;
 use App\Models\Banner;
 use App\Models\Book;
+use App\Models\StrategyDetail;
 
 class HomeController extends Controller
 {
@@ -22,6 +23,7 @@ class HomeController extends Controller
             'videos' => Video::all(),
             'banners'=>Banner::all(),
             'books'=>Book::all(),
+            
         ]);
     }
 
@@ -32,5 +34,11 @@ class HomeController extends Controller
     public function read()
     {        
         return inertia('Frontend/Homes/video');
+    }
+
+    public function strategyDetail(){
+        return inertia('Frontend/Homes/strategydetail',[
+            'strategyDetail'=>StrategyDetail::all(),
+        ]);
     }
 }
