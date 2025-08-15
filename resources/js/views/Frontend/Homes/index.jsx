@@ -66,12 +66,12 @@ function Home({ banners, supports, students, strategies, videos, books }) {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-[100px] md:h-40 object-cover rounded-t-lg"
+                  className="w-full h-[100px] md:h-40 object-cover rounded-t-xl p-1 "
                 />
                 <div className="px-3 pb-4">
                   <h3 className="text-lg font-semibold mt-2 mb-2 text-gray-800">{item.title}</h3>
-                  <hr className="border-t-3 border-dashed border-gray-300 mt-2" />
-                  <p className="text-gray-600 text-sm mt-2">{item.detail}</p>
+                  {/* <hr className="border-t-3 border-dashed border-gray-300 mt-2" />
+                  <p className="text-gray-600 text-sm mt-2">{item.detail}</p> */}
                 </div>
               </div>
             ))}
