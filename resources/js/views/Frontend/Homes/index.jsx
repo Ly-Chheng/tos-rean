@@ -66,12 +66,12 @@ function Home({ banners, supports, students, strategies, videos, books }) {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-[100px] md:h-40 object-cover rounded-t-xl p-1 "
+                  className="w-full h-[100px] md:h-40 object-cover rounded-t-lg"
                 />
                 <div className="px-3 pb-4">
                   <h3 className="text-lg font-semibold mt-2 mb-2 text-gray-800">{item.title}</h3>
-                  {/* <hr className="border-t-3 border-dashed border-gray-300 mt-2" />
-                  <p className="text-gray-600 text-sm mt-2">{item.detail}</p> */}
+                  <hr className="border-t-3 border-dashed border-gray-300 mt-2" />
+                  <p className="text-gray-600 text-sm mt-2">{item.detail}</p>
                 </div>
               </div>
             ))}
@@ -160,11 +160,11 @@ function Home({ banners, supports, students, strategies, videos, books }) {
           </div>
         </div>
       </section>
-      <section>
-        <div className="container mx-auto pb-10">
+      <section className="container mx-auto">
+        <div className="pb-10">
           <div className="flex justify-center items-center mt-[30px] md:mt-[80px] lg:mt-[80px] mb-[50px] px-10">
             <div className="items-center justify-center text-center">
-              <h2 className="text-4xl font-semibold mb-0 textblue">
+              <h2 className="text-4xl font-semibold mb-0 text-blue-600">
                 បណ្តុំសៀវភៅ
               </h2>
               <h2 className="text-lg mb-0 mt-3 text-gray-500">
@@ -172,32 +172,28 @@ function Home({ banners, supports, students, strategies, videos, books }) {
               </h2>
             </div>
           </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 min:px-5 pb-10 p-3">
+
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 px-3 pb-5 md:gap-6 md:px-6 md:pb-10 mx-auto">
             {books.map((book) => (
               <div
                 key={book.id}
-                className="m-2 border border-1 border-gray-200 bg-white rounded-lg shadow overflow-hidden transform transition-transform duration-300 hover:scale-110"
+                className="border border-gray-200 bg-white rounded-lg shadow overflow-hidden transform transition-transform duration-300 hover:scale-105"
               >
-                <a href="#">
+                <div className="lg:h-[300px] md:h-[250px] sm:h-[250px] h-[200px] w-full overflow-hidden p-2">
                   <img
                     src={book.image}
                     alt={book.title}
-                    className="w-full h-[200px] md:h-[250px] object-contain bg-gray-50 transform transition-transform duration-300 hover:scale-110 hover:opacity-90"
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105 rounded-lg"
                   />
-                </a>
-                <div className="p-3">
-                  <h2 className="text-gray-700 text-xl font-semibold truncate">
+                </div>
+
+                {/* Text Section */}
+                <div className="py-3 px-4">
+                  <h2 className="text-gray-700 text-xl font-semibold line-clamp-2 min-h-[3rem]">
                     {book.title}
                   </h2>
-                  <p className="mt-1 line-clamp-2 text-gray-500 text-sm">{book.description}</p>
-                  <hr className="border-t-3 border-dashed border-gray-300 mt-2" />
-                  <div className="flex justify-between items-center mt-2">
-                    <div className="bg-transparent border border-gray-200 inline-flex items-center gap-2 px-3 py-1 rounded-full">
-                      <FaEye className="text-orange-500" />
-                      <span className="text-orange-500 font-medium">{book.views}</span>
-                    </div>
-                    <p className="text-gray-500 text-sm">{book.date} - ថ្ងៃនេះ</p>
-                  </div>
+                  <hr className="border-t border-dashed border-gray-300 my-2 mx-auto" />
+                  <p className="text-gray-500 text-sm">{book.date} - ថ្ងៃនេះ</p>
                 </div>
               </div>
             ))}

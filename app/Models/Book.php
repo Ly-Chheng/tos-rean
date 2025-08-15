@@ -43,6 +43,15 @@ class Book extends Model
             'date' => '14/08/2025',
             'url' => '/book/2'
         ],
+        [
+            'id' => '4',
+            'title' => 'កម្រងវិញ្ញាសារ និងអត្រាកំណែគណិតវិទ្យា',
+            'description' => 'កម្រងវិញ្ញាសារ និងអត្រាកំណែគណិតវិទ្យា ថ្នាក់ទី១២ - សាលាឌីជីថល',
+            'image' => 'https://sala.moeys.gov.kh/_next/image?url=https%3A%2F%2Fapi.weteka.org%2Fpublic%2Fbooks%2F67ac03a58bd9e50b5fd5dd70%2F0001.png&w=1920&q=75',
+            'views' => 120,
+            'date' => '14/08/2025',
+            'url' => '/book/2'
+        ],
     ];
 
     public static function all($columns = ['*'])

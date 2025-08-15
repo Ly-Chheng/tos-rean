@@ -29,7 +29,20 @@ class Student extends Model
             'name' => "សុវណ្ណ រដ្ឋាបុត្រ",
             'image' => "https://img.freepik.com/free-photo/front-view-young-beautiful-lady-red-t-shirt-black-jeans-holding-different-copybooks-files-smiling-with-bag-white_140725-18639.jpg",
         ],
-        
+        [
+            'id' => 3,
+            'name' => "លឹម វណ្ណា",
+            'image' => "https://img.freepik.com/free-photo/girl-city_1157-5086.jpg?semt=ais_hybrid&w=740&q=80",
+        ],
+        [
+            'id' => 4,
+            'name' => "សុវណ្ណ រដ្ឋាបុត្រ",
+            'image' => "https://img.freepik.com/free-photo/front-view-young-beautiful-lady-red-t-shirt-black-jeans-holding-different-copybooks-files-smiling-with-bag-white_140725-18639.jpg",
+        ],[
+            'id' => 3,
+            'name' => "លឹម វណ្ណា",
+            'image' => "https://img.freepik.com/free-photo/girl-city_1157-5086.jpg?semt=ais_hybrid&w=740&q=80",
+        ]
         
     ];
 
