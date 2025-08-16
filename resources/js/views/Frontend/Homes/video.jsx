@@ -1,79 +1,151 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Layout from "../layout";
 
-function Video() {
-    const [currentVideo, setCurrentVideo] = useState({
-        id: "C1JKlm8-ayE",
-        title: "Main Video Title",
-        description: "This is the main video description."
-    });
+function Video({ podcast = [] }) {
+    const [activeVideoIndex, setActiveVideoIndex] = useState(0);
+    const [autoplay, setAutoplay] = useState(false);
+    const [loading, setLoading] = useState(true); // ✅ make it a state
 
-    const relatedVideos = [
-        {
-            id: "dQw4w9WgXcQ",
-            title: "Related Video 1",
-            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg",
-            description: "Description for related video 1."
-        },
-        {
-            id: "3JZ_D3ELwOQ",
-            title: "Related Video 2",
-            thumbnail: "https://img.youtube.com/vi/3JZ_D3ELwOQ/mqdefault.jpg",
-            description: "Description for related video 2."
-        },
-        {
-            id: "LXb3EKWsInQ",
-            title: "Related Video 3",
-            thumbnail: "https://img.youtube.com/vi/LXb3EKWsInQ/mqdefault.jpg",
-            description: "Description for related video 3."
+    const currentVideo = podcast[activeVideoIndex] || null;
+    const listRef = useRef(null);
+
+    // simulate API call
+    useEffect(() => {
+        const timer = setTimeout(() => setLoading(false), 1500);
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        if (podcast.length === 0) {
+            setActiveVideoIndex(0);
+        } else if (activeVideoIndex >= podcast.length) {
+            setActiveVideoIndex(podcast.length - 1);
         }
-    ];
+    }, [podcast, activeVideoIndex]);
+
+    useEffect(() => {
+        const list = listRef.current;
+        if (list && podcast.length > 0) {
+            const activeButton = list.children[activeVideoIndex];
+            if (activeButton) {
+                activeButton.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }
+        }
+    }, [activeVideoIndex, podcast]);
+
+    const handleVideoClick = (index) => {
+        if (index >= 0 && index < podcast.length) {
+            setActiveVideoIndex(index);
+            setAutoplay(true);
+        }
+    };
 
     return (
         <Layout>
-            <div className="flex flex-col lg:flex-row gap-6 p-4">
+            <div className="flex flex-col lg:flex-row gap-6 p-4 max-w-7xl mx-auto">
                 {/* Main Video Section */}
                 <div className="flex-1">
-                    <div className="w-full aspect-video">
-                        <iframe
-                            width="100%"
-                            height="100%"
-                            src={`https://www.youtube.com/embed/${currentVideo.id}`}
-                            title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                        ></iframe>
-                    </div>
-                    <div className="mt-4">
-                        <h2 className="text-xl font-bold">{currentVideo.title}</h2>
-                        <p className="text-gray-600 mt-1">{currentVideo.description}</p>
-                    </div>
-                </div>
-
-                {/* Related Videos Section */}
-                <div className="w-full lg:w-1/3">
-                    <h3 className="text-lg font-semibold mb-3">វីដេអូពាក់ព័ន្ធ</h3>
-                    <div className="flex flex-col gap-2 overflow-y-auto max-h-[500px] pr-2">
-                        {relatedVideos.map((video, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setCurrentVideo(video)}
-                                className="flex gap-3 hover:bg-gray-100 p-2 rounded-lg transition text-left"
-                            >
-                                <img
-                                    src={video.thumbnail}
-                                    alt={video.title}
-                                    className="w-40 h-24 object-cover rounded"
+                    {loading ? (
+                        <div className="animate-pulse">
+                            <div className="w-full aspect-video rounded-lg bg-gray-300"></div>
+                            <div className="h-6 bg-gray-300 rounded mt-4 w-3/4"></div>
+                            <div className="h-4 bg-gray-300 rounded mt-2 w-full"></div>
+                            <div className="h-4 bg-gray-300 rounded mt-2 w-5/6"></div>
+                        </div>
+                    ) : currentVideo && podcast.length > 0 ? (
+                        <div>
+                            <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg">
+                                <iframe
+                                    width="100%"
+                                    height="100%"
+                                    src={`https://www.youtube.com/embed/${currentVideo.videoId}${autoplay ? "?autoplay=1" : ""}&rel=0`}
+                                    // src={`https://www.youtube.com/embed/${currentVideo.videoId}${autoplay ? "?autoplay=1" : ""}${autoplay ? "&" : "?"}rel=0`}
+                                    title={currentVideo.title || "Video"}
+                                    // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    onLoad={() => setAutoplay(true)}
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen
+                                    
                                 />
-                                <div className="flex flex-col justify-center">
-                                    <p className="font-medium text-sm">{video.title}</p>
-                                    <span className="text-gray-500 text-xs">1.2M views • 2 days ago</span>
-                                </div>
-                            </button>
-                        ))}
-                    </div>
+                            </div>
+                            <h2 className="text-2xl font-bold text-gray-800 mt-4 line-clamp-2">
+                                {currentVideo.title || "No title available"}
+                            </h2>
+                            <p className="text-gray-600 mt-2 line-clamp-3">
+                                {currentVideo.description || "No description available"}
+                            </p>
+                        </div>
+                    ) : (
+                        <div className="w-full aspect-video rounded-lg bg-gray-200 flex items-center justify-center">
+                            <p className="text-gray-500 text-lg">No video selected</p>
+                        </div>
+                    )}
                 </div>
 
+                {/* Related Video List */}
+                <div className="w-full lg:w-1/3">
+                    <div className="flex justify-between items-center p-3 rounded-t-lg sticky top-0 z-10">
+                        <h3 className="text-lg font-semibold">វីដេអូពាក់ព័ន្ធ</h3>
+                    </div>
+
+                    {loading ? (
+                        <div className="flex flex-col gap-3 max-h-[500px] overflow-y-auto pr-2 border border-gray-200 rounded-b-lg animate-pulse">
+                            {Array.from({ length: 5 }).map((_, i) => (
+                                <div key={i} className="flex gap-3 p-3">
+                                    <div className="w-40 h-24 bg-gray-300 rounded-md"></div>
+                                    <div className="flex flex-col justify-center flex-1 gap-2">
+                                        <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+                                        <div className="h-3 bg-gray-300 rounded w-1/2"></div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    ) : podcast.length > 0 ? (
+                        <div
+                            ref={listRef}
+                            className="flex flex-col gap-3 p-1 overflow-y-auto max-h-[500px] pr-2 border border-gray-200 rounded-b-lg"
+                        >
+                            {podcast.map((video, index) => (
+                                <button
+                                    key={video.id || index}
+                                    onClick={() => handleVideoClick(index)}
+                                    disabled={index === activeVideoIndex}
+                                    className={`flex gap-3 p-3 rounded-lg transition-all text-left w-full ${index === activeVideoIndex
+                                            ? "bg-gray-200 cursor-default"
+                                            : "hover:bg-gray-100 cursor-pointer"
+                                        }`}
+                                >
+                                    <img
+                                        src={video.thumbnail || "https://via.placeholder.com/160x90"}
+                                        alt={video.title || "Video thumbnail"}
+                                        className="w-40 h-24 object-cover rounded-md"
+                                        loading="lazy"
+                                    />
+                                    <div className="flex flex-col justify-between">
+                                        <div>
+                                            <p className="font-medium text-sm line-clamp-2">
+                                                {video.title || "Untitled Video"}
+                                            </p>
+                                            <p className="text-xs text-gray-600 line-clamp-2">
+                                                {video.description || "Description Video"}
+                                            </p>
+                                        </div>
+                                            
+                                        <span className="text-gray-500 text-xs">
+                                            {video.views || "1.2M"} views • {video.uploadDate || "2 days ago"}
+                                        </span>
+                                    </div>
+                                </button>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="p-4 text-center text-gray-500 border border-gray-200 rounded-b-lg">
+                            No related videos available
+                        </div>
+                    )}
+                </div>
             </div>
         </Layout>
     );
