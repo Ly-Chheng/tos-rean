@@ -27,7 +27,7 @@ function Home({ banners, supports, students, strategies, videos, books, podcast 
   );
   useEffect(() => {
     // simulate API call
-    setTimeout(() => setLoading(false), 4500);
+    setTimeout(() => setLoading(false), 1000);
   }, []);
   return (
     <Layout>
@@ -114,7 +114,7 @@ function Home({ banners, supports, students, strategies, videos, books, podcast 
               ))}
           </div>
         </div>
-        <div className="flex items-center justify-center mt-10 pb-10">
+        {/* <div className="flex items-center justify-center mt-10 pb-10">
           {loading ? (
             <div className="w-32 h-10 bg-gray-300 rounded-lg animate-pulse"></div>
           ) : (
@@ -125,7 +125,7 @@ function Home({ banners, supports, students, strategies, videos, books, podcast 
               </button>
             </a>
           )}
-        </div>
+        </div> */}
       </section>
 
       <section>
@@ -247,9 +247,6 @@ function Home({ banners, supports, students, strategies, videos, books, podcast 
           )}
         </div>
       </section>
-
-
-
       <section className="container mx-auto">
         <div className="pb-10">
           <div className="flex justify-center items-center mt-[30px] md:mt-[80px] lg:mt-[80px] mb-[50px] px-10">
@@ -377,7 +374,7 @@ function Home({ banners, supports, students, strategies, videos, books, podcast 
                     />
                   </div>
                   <div className="p-3">
-                    <h3 className="text-base font-semibold text-gray-700 mb-2">{video.title}</h3>
+                    <h3 className="text-base font-semibold text-gray-700 mb-2 line-clamp-2 min-h-[3rem]">{video.title}</h3>
                     <div className="flex items-center">
                       <div className="p-1 rounded-full bg-red-700 mr-2 text-white">
                         <FaYoutube />

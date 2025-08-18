@@ -43,7 +43,10 @@ function Navbar({ children }) {
         <>
             <header className="shadow-md text-black bg-white fixed top-0 left-0 right-0 z-50">
                 <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-                    <img src={Logo} alt="Logo" className="h-10" />
+                    <Link href={route('home')}>
+                        <img src={Logo} alt="Logo" className="h-10" />
+                    </Link>
+                    
                     <nav className="hidden md:flex space-x-4">
                         {menuItems.map((item, index) => {
                             if (item.permission === null) {

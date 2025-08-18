@@ -44,6 +44,25 @@ class Podcast extends Model
             'thumbnail' => "https://img.youtube.com/vi/DcwuJk8dV1M/maxresdefault.jpg",
             'created_at' => '2025-08-01 10:00:00',
         ],
+        [
+            'id' => 5,
+            'title' => "ម៉ោះប្អូនៗទី១២!!! ធ្វើលំហាត់ផង ស្តាប់Podcast ផង ខំប្រឹងយកនិទ្ទេស A ទាំងអស់គ្",
+            'description' => "សូមរីករាយទស្សនាការផ្សាយផ្ទាល់លើគេហទំព័រហ្វេសបុកផ្លូវការ BELTEI IS Podcast ដោយ កញ្ញា ចាន់ ឈុងបួយ ដែលជាសិស្សនិទ្ទេសA លើគ្រប់មុខវិជ្ជា ក្នុងសម័យប្រលងឆ្នាំ២០២៤ ទៅលើប្រធានបទ៖ គន្លឹះដើម្បីទទួលបាននិទ្ទេសA",
+            'videoId' => "CFWMsp9I8MQ",
+            'link' => "https://www.youtube.com/watch?v=CFWMsp9I8MQ",
+            'thumbnail' => "https://img.youtube.com/vi/CFWMsp9I8MQ/maxresdefault.jpg",
+            'created_at' => '2025-08-01 10:00:00',
+        ],
+        [
+            'id' => 6,
+            'title' => "ក្រោយភ្លៀង មេឃស្រឡះ",
+            'description' => "Season 1 Ep.3 ក្រោយភ្លៀង មេឃស្រឡះ ដោយយុវជនជ័យលាភីកម្មវិធីជជែកដេញដោលយុវជនថ្នាក់ជាតិ ២០២៤",
+            'videoId' => "DcwuJk8dV1M",
+            'link' => "https://www.youtube.com/watch?v=DcwuJk8dV1M",
+            'thumbnail' => "https://img.youtube.com/vi/DcwuJk8dV1M/maxresdefault.jpg",
+            'created_at' => '2025-08-01 10:00:00',
+        ],
+        
     ];
 
     public static function all($columns = ['*'])

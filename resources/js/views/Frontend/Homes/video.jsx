@@ -91,7 +91,7 @@ function Video({ podcast = [] }) {
                     </div>
 
                     {loading ? (
-                        <div className="flex flex-col gap-3 max-h-[500px] overflow-y-auto pr-2 border border-gray-200 rounded-b-lg animate-pulse">
+                        <div className="flex flex-col gap-3 border border-gray-200 rounded-b-lg animate-pulse">
                             {Array.from({ length: 5 }).map((_, i) => (
                                 <div key={i} className="flex gap-3 p-3">
                                     <div className="w-40 h-24 bg-gray-300 rounded-md"></div>
@@ -105,7 +105,7 @@ function Video({ podcast = [] }) {
                     ) : podcast.length > 0 ? (
                         <div
                             ref={listRef}
-                            className="flex flex-col gap-3 p-1 overflow-y-auto max-h-[500px] pr-2 border border-gray-200 rounded-b-lg"
+                            className="flex flex-col gap-3 p-1  pr-2 border border-gray-200 rounded-b-lg"
                         >
                             {podcast.map((video, index) => (
                                 <button

@@ -45,6 +45,7 @@ class HomeController extends Controller
     {
         return inertia('Frontend/Homes/strategydetail', [
             'strategyDetail' => StrategyDetail::all(),
+            'strategies' => Strategy::all(),
         ]);
     }
 }
