@@ -175,7 +175,7 @@ function StrategyDetail({ strategyDetail, strategies }) {
                                 <div
                                     className={`flex border-2 rounded-lg sm:w-[250px] lg:w-auto transform transition-transform duration-300 hover:scale-95 hover:bg-gray-200 items-center gap-3 mb-2  ${activeStrategyId === item.id
                                             ? "border-[#0A96A4] bg-gray-300"
-                                            : "border-gray-300"
+                                            : "border-gray-200"
                                         }`}
                                 >
                                     <img
