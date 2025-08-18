@@ -2,7 +2,6 @@ import Layout from "../layout";
 import { Link, usePage } from '@inertiajs/react';
 import React, { useState, useRef, useEffect } from 'react';
 import { FaGraduationCap, FaYoutube, FaArrowCircleRight, FaPlayCircle, FaEye } from "react-icons/fa";
-import Podcast from "../../../assets/images/podcast.png";
 import vector_bg from '../../../assets/images/vector_bg.png';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -11,7 +10,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import useAutoScroll from "../../../hook/useAutoScroll";
 
-function Home({ banners, supports, students, strategies, videos, books }) {
+function Home({ banners, supports, students, strategies, videos, books, podcast }) {
   const [activeVideoIndex, setActiveVideoIndex] = useState(null);
   const [loading, setLoading] = useState(true);
   const studentsRef = useRef(null);
@@ -28,7 +27,7 @@ function Home({ banners, supports, students, strategies, videos, books }) {
   );
   useEffect(() => {
     // simulate API call
-    setTimeout(() => setLoading(false), 5500);
+    setTimeout(() => setLoading(false), 4500);
   }, []);
   return (
     <Layout>
@@ -86,10 +85,10 @@ function Home({ banners, supports, students, strategies, videos, books }) {
                 >
                   <div className="w-full h-[100px] md:h-40 bg-gray-300 rounded-t-lg"></div>
                   <div className="px-3 pb-4 mt-2">
-                    <div className="w-3/4 h-5 bg-gray-300 rounded mb-2"></div>
-                    <div className="w-full h-1 border-t border-dashed border-gray-200 mt-2"></div>
+                    <div className="w-full h-5 bg-gray-200 rounded"></div>
+                    {/* <div className="w-full h-1 border-t border-dashed border-gray-200 mt-2"></div> */}
                     <div className="w-full h-3 bg-gray-200 rounded mt-2"></div>
-                    <div className="w-5/6 h-3 bg-gray-200 rounded mt-1"></div>
+                    {/* <div className="w-5/6 h-3 bg-gray-200 rounded mt-1"></div> */}
                   </div>
                 </div>
               ))
@@ -106,9 +105,9 @@ function Home({ banners, supports, students, strategies, videos, books }) {
                       className="w-full h-[100px] md:h-40 object-cover rounded-t-lg"
                     />
                     <div className="px-3 pb-4">
-                      <h3 className="text-lg font-semibold mt-2 mb-2 text-gray-800">{item.title}</h3>
-                      <hr className="border-t-3 border-dashed border-gray-300 mt-2" />
-                      <p className="text-gray-600 text-sm mt-2">{item.detail}</p>
+                      <h3 className="text-lg font-semibold mt-2 mb-2 text-gray-800 line-clamp-2 min-h-[3rem]">{item.title}</h3>
+                      {/* <hr className="border-t-3 border-dashed border-gray-300 mt-2" />
+                      <p className="text-gray-600 text-sm mt-2">{item.detail}</p> */}
                     </div>
                   </div>
                 </Link>
@@ -184,7 +183,6 @@ function Home({ banners, supports, students, strategies, videos, books }) {
           </div>
         </div>
       </section>
-
       <section className="pt-[10px] bg-gray-50">
         <div className="container mx-auto pb-10">
           <div className="flex justify-center items-center mt-[30px] md:mt-[80px] lg:mt-[80px] mb-[50px] px-10">
@@ -200,12 +198,13 @@ function Home({ banners, supports, students, strategies, videos, books }) {
                     BELTEI IS Podcast
                   </h2>
                   <h2 className="text-lg mb-0 mt-3 text-gray-500">
-                    សិស្សនិទ្ទេស A អតីតសិស្សថ្នាក់ទី12 ក្នុងឆ្នាំសិក្សា២០២៣ ២០២៤ នៃសាលា ប៊ែលធី អន្តរជាតិ
+                    គំនិត ចំណេះដឹង បទពិសោធន៍
                   </h2>
                 </>
               )}
             </div>
           </div>
+
           {loading ? (
             <div className="flex flex-col lg:flex-row bg-gray-400 rounded-2xl mt-2 animate-pulse h-[300px]">
               <div className="lg:flex-1 bg-gray-300 h-[300px] rounded-2xl lg:rounded-tr-[150px] lg:rounded-br-[150px]"></div>
@@ -217,35 +216,39 @@ function Home({ banners, supports, students, strategies, videos, books }) {
               </div>
             </div>
           ) : (
-            <div className="flex flex-col lg:flex-row bgblue rounded-2xl mt-2">
-              <img
-                src="https://education.ams.com.kh/wp-content/uploads/2024/11/Nov-65.png"
-                alt="Podcast"
-                className="object-cover lg:rounded-2xl lg:rounded-tr-[150px] lg:rounded-br-[150px] h-[300px]"
-              />
-              <div className="flex justify-center flex-rows p-3 md:p-10">
-                <div className="flex flex-col px-3 sm:px-5 justify-center items-start">
-                  <p className="text-white text-3xl font-semibold mb-2">
-                    ការធ្វើបទបង្ហាញគឺជាដំណើរឆ្ពោះទៅរកការបង្រៀន
-                  </p>
-                  <p className="text mt-3 mb-0 text-white">
-                    នៅក្នុងការកំណត់នៃការអប់រំ ការធ្វើបទបង្ហាញគឺជាដំណើរឆ្ពោះទៅរកការបង្រៀន ឬផ្តល់ការបង្រៀនប្រកបដោយភាពទាក់ទាញ។ សម្រាប់សន្និសីទ សិក្ខាសាលា និងព្រឹត្តិការណ៍សាធារណៈ
-                  </p>
-                  <a href="#" className="inline-block mt-5 self-start">
-                    <button
-                      type="button"
-                      className="bg-white w-full py-3 px-5 rounded-lg text-orange-600 text-lg flex items-center justify-center gap-2 hover:shadow-lg hover:text-white hover:bg-orange-500"
+            podcast && (  // ✅ safety check
+              <div className="flex flex-col lg:flex-row bgblue rounded-2xl mt-2">
+                <img
+                  src={podcast.thumbnail}
+                  alt={podcast.title}
+                  className="object-cover lg:rounded-2xl lg:rounded-tr-[150px] lg:rounded-br-[150px] h-[300px]"
+                />
+                <div className="flex justify-center flex-rows p-3 md:p-10">
+                  <div className="flex flex-col px-3 sm:px-5 justify-center items-start">
+                    <p className="text-white text-3xl font-semibold mb-2">{podcast.title}</p>
+                    <p className="text mt-3 mb-0 text-white">{podcast.description}</p>
+
+                    <Link
+                      href={`/video/${podcast.id}`}
+                      className="inline-block mt-5 self-start"
                     >
-                      មើលឥឡូវ
-                      <FaPlayCircle />
-                    </button>
-                  </a>
+                      <button
+                        type="button"
+                        className="bg-white w-full py-3 px-5 rounded-lg text-orange-600 text-lg flex items-center justify-center gap-2 hover:shadow-lg hover:text-white hover:bg-orange-500"
+                      >
+                        មើលឥឡូវ
+                        <FaPlayCircle />
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
+            )
           )}
         </div>
       </section>
+
+
 
       <section className="container mx-auto">
         <div className="pb-10">
@@ -259,10 +262,10 @@ function Home({ banners, supports, students, strategies, videos, books }) {
               ) : (
                 <>
                   <h2 className="text-4xl font-semibold mb-0 text-blue-600">
-                    បណ្តុំសៀវភៅ
+                    អត្ថបទចំណេះដឹង
                   </h2>
                   <h2 className="text-lg mb-0 mt-3 text-gray-500">
-                    សៀវភៅទាំងនេះចង់បង្ហាញអ្នកទាំងអស់គ្នានៅចំណុចដែលសំខា ន់ៗនៃការអភិវឌ្ឍខ្លួន
+                    បណ្តុំចែករំលែកចំណេះដឹងខ្លី ដែលពេញនិយម
                   </h2>
                 </>
               )}
@@ -275,7 +278,7 @@ function Home({ banners, supports, students, strategies, videos, books }) {
                   key={index}
                   className="border border-gray-200 bg-white rounded-lg shadow overflow-hidden animate-pulse"
                 >
-                  <div className="lg:h-[300px] md:h-[250px] sm:h-[250px] h-[200px] w-full bg-gray-300 p-2 rounded-lg"></div>
+                  <div className="lg:h-[150px] md:h-[100px]  h-[50px] w-full bg-gray-300 p-2 rounded-lg"></div>
                   <div className="py-3 px-4">
                     <div className="w-3/4 h-5 bg-gray-300 rounded mb-2"></div>
                     <div className="w-full h-1 border-t border-dashed border-gray-200 my-2"></div>
@@ -288,19 +291,19 @@ function Home({ banners, supports, students, strategies, videos, books }) {
                   key={book.id}
                   className="border border-gray-200 bg-white rounded-lg shadow overflow-hidden transform transition-transform duration-300 hover:scale-105"
                 >
-                  <div className="lg:h-[300px] md:h-[250px] sm:h-[250px] h-[200px] w-full overflow-hidden p-2">
+                  <div className="sm:h-[150px]  min:h-[120px] w-full overflow-hidden p-1">
                     <img
                       src={book.image}
                       alt={book.title}
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105 rounded-lg"
                     />
                   </div>
-                  <div className="py-3 px-4">
-                    <h2 className="text-gray-700 text-xl font-semibold line-clamp-2 min-h-[3rem]">
+                  <div className="py-1 px-4">
+                    <h2 className="text-gray-700 text-lg font-semibold line-clamp-2 min-h-[3rem]">
                       {book.title}
                     </h2>
-                    <hr className="border-t border-dashed border-gray-300 my-2 mx-auto" />
-                    <p className="text-gray-500 text-sm">{book.date} - ថ្ងៃនេះ</p>
+                    <hr className="border-t border-dashed border-gray-300 my-2 mx-auto"/>
+                    <p className="text-gray-500  text-sm">{book.date} - ថ្ងៃនេះ</p>
                   </div>
                 </div>
               ))}
@@ -333,7 +336,7 @@ function Home({ banners, supports, students, strategies, videos, books }) {
                 BELTEI IU Talk Show
               </h2>
               <p className="text-lg mb-0 mt-3 text-gray-500 max-w-lg">
-                សិស្សនិទ្ទេស A អតីតសិស្សថ្នាក់ទី12 ក្នុងឆ្នាំសិក្សា២០២៣ និង ២០២៤ នៃសាលា ប៊ែលធី អន្តរជាតិ
+                The Place where Education meets Leadership, and Ideas change the World!
               </p>
             </>
           )}
