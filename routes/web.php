@@ -9,6 +9,7 @@ use Inertia\Inertia;
 Route::redirect('/', '/home');
 Route::get('home', [App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('home');
 Route::get('video', [App\Http\Controllers\Frontend\HomeController::class, 'video'])->name('video');
+Route::get('home/strategy_detail', [App\Http\Controllers\Frontend\HomeController::class, 'strategyDetail'])->name('strategyDetail');
 
 Route::get('book', [App\Http\Controllers\Frontend\BooksController::class, 'index'])->name('book');
 Route::get('class', [App\Http\Controllers\Frontend\ClassesController::class, 'index'])->name('class');

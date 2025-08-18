@@ -104,7 +104,7 @@ function Navbar({ children }) {
                 {children}
             </main>
 
-            <Footer/>
+            {/* <Footer/> */}
         </>
     );
 }
