@@ -11,6 +11,7 @@ use App\Models\Banner;
 use App\Models\Book;
 use App\Models\StrategyDetail;
 use App\Models\Podcast;
+use App\Models\TalkShow;
 
 class HomeController extends Controller
 {
@@ -46,6 +47,23 @@ class HomeController extends Controller
         return inertia('Frontend/Homes/strategydetail', [
             'strategyDetail' => StrategyDetail::all(),
             'strategies' => Strategy::all(),
+        ]);
+    }
+
+    public function talkShow()
+    {        
+        return inertia('Frontend/Homes/talkshow', [
+            // 'talkShow' => TalkShow::all(),
+            'talkShow' => Video::all(),
+        ]);
+    }
+
+    
+    public function audio()
+    {        
+        return inertia('Frontend/Homes/audio', [
+            // // 'talkShow' => TalkShow::all(),
+            // 'talkShow' => Video::all(),
         ]);
     }
 }

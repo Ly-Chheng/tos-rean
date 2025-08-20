@@ -100,7 +100,7 @@ function Home({ banners, supports, students, strategies, videos, books, podcast 
                     style={{ '--index': index }}
                   >
                     <img
-                      src={item.image}
+                      src={item.thumbnail}
                       alt={item.title}
                       className="w-full h-[100px] md:h-40 object-cover rounded-t-lg"
                     />
@@ -171,11 +171,12 @@ function Home({ banners, supports, students, strategies, videos, books, podcast 
                 ))
                 : students.map((student) => (
                   <div key={student.id} className="flex flex-col items-center shrink-0 mb-6">
+                    <Link href="audio">
                     <img
                       src={student.image}
                       alt={student.name}
                       className="w-20 sm:w-[120px] lg:w-[150px] h-20 sm:h-[120px] lg:h-[150px] object-cover rounded-full shadow-lg border aspect-square"
-                    />
+                    /></Link>
                     <p className="text-orange-600 mt-2 text-sm">{student.name}</p>
                   </div>
                 ))}
@@ -366,13 +367,15 @@ function Home({ banners, supports, students, strategies, videos, books, podcast 
                   role="button"
                   tabIndex={0}
                 >
-                  <div className="aspect-video w-full overflow-hidden rounded">
-                    <img
-                      src={video.thumbnail}
-                      alt={video.title}
-                      className="w-full h-full object-cover rounded transition-opacity duration-200 hover:opacity-90"
-                    />
-                  </div>
+                  <Link href={route('talkShow')}>
+                    <div className="aspect-video w-full overflow-hidden rounded cursor-pointer">
+                      <img
+                        src={video.thumbnail}
+                        alt={video.title}
+                        className="w-full h-full object-cover rounded transition-opacity duration-200 hover:opacity-90"
+                      />
+                    </div>
+                  </Link>
                   <div className="p-3">
                     <h3 className="text-base font-semibold text-gray-700 mb-2 line-clamp-2 min-h-[3rem]">{video.title}</h3>
                     <div className="flex items-center">

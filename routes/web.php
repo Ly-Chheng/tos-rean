@@ -10,6 +10,8 @@ Route::redirect('/', '/home');
 Route::get('home', [App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('home');
 Route::get('video/{id?}', [App\Http\Controllers\Frontend\HomeController::class, 'video'])->name('video');
 Route::get('home/strategy_detail', [App\Http\Controllers\Frontend\HomeController::class, 'strategyDetail'])->name('strategyDetail');
+Route::get('home/talkshow', [App\Http\Controllers\Frontend\HomeController::class, 'talkShow'])->name('talkShow');
+Route::get('audio', [App\Http\Controllers\Frontend\HomeController::class, 'audio'])->name('audio');
 
 Route::get('book', [App\Http\Controllers\Frontend\BooksController::class, 'index'])->name('book');
 Route::get('class', [App\Http\Controllers\Frontend\ClassesController::class, 'index'])->name('class');

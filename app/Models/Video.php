@@ -14,7 +14,7 @@ class Video extends Model
             'duration' => '15 នាទី',
             'videoId' => 'knNdjHvvZRo',
             'description'=>'លោក​ ផន វិសាល ជានិស្សិតឆ្នាំទី៤ ឆមាសទី២ មកពីមហាវិទ្យាល័យ អាកាសចរណ៍ សុីវិល នៃសាកលវិទ្យាល័យ ប៊ែលធី អន្តរជាតិ ដែលលោកនឹងបកស្រាយក្រោមប្រធានបទស្តីអំពី “គោលបំណង នៃការសិក្សាអាកាសចរណ៍ សុីវិល” នៅក្នុងកម្មវិធី BELTEI IU Talk ។',
-            'thumbnail' => 'https://img.youtube.com/vi/knNdjHvvZRo/hqdefault.jpg',
+            'thumbnail' => 'https://img.youtube.com/vi/knNdjHvvZRo/maxresdefault.jpg',
             'videoUrl' => 'https://www.youtube.com/embed/knNdjHvvZRo',
         ],
         [
@@ -41,7 +41,7 @@ class Video extends Model
             'duration' => '18 នាទី',
             'videoId' => 'i-OdWO319e0',
             'description'=>'កញ្ញា ឆែម នីកា ជានិស្សិតឆ្នាំទី៣ មកពីមហាវិទ្យាល័យ ទំនាក់ទំនងអន្តរជាតិ នៃសាកលវិទ្យាល័យ ប៊ែលធី អន្តរជាតិ ដែលកញ្ញានឹងបកស្រាយក្រោមប្រធានបទ “ ការចែករំលែកបទពិសោធន៍ដែល ទាក់ទងនិង ការចូលរួមក្នុងកម្មវិធី  Binus Indo Pacific Forum ” នៅក្នុងកម្មវិធី BELTEI IU Talk ។',
-            'thumbnail' => 'https://img.youtube.com/vi/i-OdWO319e0/hqdefault.jpg',
+            'thumbnail' => 'https://img.youtube.com/vi/i-OdWO319e0/maxresdefault.jpg',
             'videoUrl' => 'https://www.youtube.com/embed/i-OdWO319e0',
         ],
     ];
