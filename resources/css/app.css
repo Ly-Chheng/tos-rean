@@ -28,3 +28,11 @@
   animation: fadeInUp 0.6s ease-out forwards; /* Duration and easing */
   animation-delay: calc(var(--index) * 0.2s); /* Stagger by 0.2s per item */
 }
+
+media-controller {
+  --media-control-background: #111;   /* background */
+  --media-control-hover-background: #333;
+  --media-icon-color: white;          /* icon color */
+  --media-range-track-color: #555;
+  --media-range-thumb-color: #22c55e; /* green progress thumb */
+}

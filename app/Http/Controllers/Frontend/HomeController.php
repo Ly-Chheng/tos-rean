@@ -64,6 +64,7 @@ class HomeController extends Controller
         return inertia('Frontend/Homes/audio', [
             // // 'talkShow' => TalkShow::all(),
             // 'talkShow' => Video::all(),
+            'students' => Student::all(),
         ]);
     }
 }
